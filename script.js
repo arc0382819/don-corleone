@@ -87,11 +87,15 @@
   var switchButtons = document.querySelectorAll('.switch button');
 
   function setBranch(branch, animate) {
-    if (body.getAttribute('data-branch') === branch && !animate) return;
     body.setAttribute('data-branch', branch);
 
     switchButtons.forEach(function (button) {
       button.setAttribute('aria-pressed', button.getAttribute('data-set') === branch ? 'true' : 'false');
+    });
+
+    // Выбрать можно только мастеров этого зала
+    document.querySelectorAll('input[name="master"]').forEach(function (input) {
+      input.disabled = input.getAttribute('data-branch') !== branch;
     });
 
     if (animate) {
@@ -260,8 +264,9 @@
     });
   });
 
-  // Переключатель зала: если выбран мастер из другого зала, сбрасываем выбор
-  switchButtons.forEach(function (button) {
+  // Переключатель зала в шапке и кнопки «Переключить зал» у мастеров.
+  // Если был выбран мастер из другого зала, сбрасываем выбор.
+  document.querySelectorAll('.switch button, .link-btn[data-set]').forEach(function (button) {
     button.addEventListener('click', function () {
       var branch = button.getAttribute('data-set');
       setBranch(branch, true);
@@ -306,10 +311,11 @@
     if (event.key === THEME_KEY) schemeMeta.content = event.newValue || 'light dark';
   });
 
-  // Вспоминаем зал, который гость выбрал в прошлый раз
+  // Вспоминаем зал, который гость выбрал в прошлый раз,
+  // иначе включаем зал по умолчанию
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
-  if (saved === 'd' || saved === 'f') setBranch(saved, false);
+  setBranch(saved === 'f' ? 'f' : 'd', false);
 
   update();
 })();

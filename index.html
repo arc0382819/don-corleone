@@ -157,27 +157,40 @@
 
         <fieldset class="step">
           <legend><span class="step-n">1</span>Мастер</legend>
+          <p class="step-hint">Показаны мастера выбранного зала. Остальные принимают по&nbsp;другому адресу.</p>
           <div class="pick-list">
-            <label class="pick master">
-              <input type="radio" name="master" value="farid" data-branch="d">
-              <span class="master-name">Фарид</span>
-              <span class="master-meta">Pro-барбер, Дворцовый. 5,0 по&nbsp;501&nbsp;оценке</span>
-            </label>
-            <label class="pick master">
-              <input type="radio" name="master" value="feruz" data-branch="d">
-              <span class="master-name">Феруз</span>
-              <span class="master-meta">Pro-барбер, Дворцовый. 5,0 по&nbsp;23&nbsp;оценкам</span>
-            </label>
-            <label class="pick master">
-              <input type="radio" name="master" value="khurshid" data-branch="f">
-              <span class="master-name">Хуршид</span>
-              <span class="master-meta">Барбер, Федюнинского. 5,0 по&nbsp;233&nbsp;оценкам</span>
-            </label>
-            <label class="pick master">
-              <input type="radio" name="master" value="bos" data-branch="f">
-              <span class="master-name">Бос</span>
-              <span class="master-meta">Барбер, Федюнинского. 5,0 по&nbsp;141&nbsp;оценке</span>
-            </label>
+            <div class="master" data-b="d">
+              <label class="pick">
+                <input type="radio" name="master" value="farid" data-branch="d">
+                <span class="master-name">Фарид</span>
+              </label>
+              <span class="master-meta">Pro-барбер. 5,0 по&nbsp;501&nbsp;оценке</span>
+              <p class="master-else">Принимает на&nbsp;Дворцовом, 14/9. <button type="button" class="link-btn" data-set="d">Переключить зал</button></p>
+            </div>
+            <div class="master" data-b="d">
+              <label class="pick">
+                <input type="radio" name="master" value="feruz" data-branch="d">
+                <span class="master-name">Феруз</span>
+              </label>
+              <span class="master-meta">Pro-барбер. 5,0 по&nbsp;23&nbsp;оценкам</span>
+              <p class="master-else">Принимает на&nbsp;Дворцовом, 14/9. <button type="button" class="link-btn" data-set="d">Переключить зал</button></p>
+            </div>
+            <div class="master" data-b="f">
+              <label class="pick">
+                <input type="radio" name="master" value="khurshid" data-branch="f">
+                <span class="master-name">Хуршид</span>
+              </label>
+              <span class="master-meta">Барбер. 5,0 по&nbsp;233&nbsp;оценкам</span>
+              <p class="master-else">Принимает на&nbsp;Федюнинского, 14к1. <button type="button" class="link-btn" data-set="f">Переключить зал</button></p>
+            </div>
+            <div class="master" data-b="f">
+              <label class="pick">
+                <input type="radio" name="master" value="bos" data-branch="f">
+                <span class="master-name">Бос</span>
+              </label>
+              <span class="master-meta">Барбер. 5,0 по&nbsp;141&nbsp;оценке</span>
+              <p class="master-else">Принимает на&nbsp;Федюнинского, 14к1. <button type="button" class="link-btn" data-set="f">Переключить зал</button></p>
+            </div>
           </div>
         </fieldset>
 

@@ -319,10 +319,12 @@ body[data-branch="f"].switched .d-only { display: none; }
 .pick input { flex: none; width: 20px; height: 20px; margin: 0; transform: translateY(2px); cursor: pointer; }
 
 .master {
-  flex-wrap: wrap; column-gap: 20px; row-gap: 2px;
+  display: flex; align-items: baseline; flex-wrap: wrap;
+  column-gap: 20px; row-gap: 2px;
   padding-block: 12px;
   border-bottom: 1px solid var(--rule);
 }
+.master .pick { align-items: baseline; }
 .master-name {
   font-family: var(--display); font-weight: 700;
   font-size: clamp(36px, 5vw, 64px);
@@ -330,6 +332,22 @@ body[data-branch="f"].switched .d-only { display: none; }
 }
 .master-meta { font-size: 15px; color: var(--muted); margin-left: auto; }
 .master:hover .master-name, .master:has(input:checked) .master-name { color: var(--accent); }
+
+/* Мастер другого зала: выбрать нельзя, зато видно, где он принимает */
+.master-else { display: none; flex-basis: 100%; font-size: 15px; color: var(--muted); padding-left: 36px; }
+.master:has(input:disabled) { cursor: default; }
+.master:has(input:disabled) .pick { cursor: default; }
+.master:has(input:disabled) .master-name { color: var(--muted); opacity: 0.55; }
+.master:has(input:disabled):hover .master-name { color: var(--muted); }
+.master:has(input:disabled) .master-meta { display: none; }
+.master:has(input:disabled) .master-else { display: block; }
+.master:has(input:disabled) input { cursor: default; opacity: 0.4; }
+
+.link-btn {
+  font: inherit; color: var(--accent); background: none; border: 0; padding: 0;
+  cursor: pointer; text-decoration: underline; text-underline-offset: 4px;
+}
+.link-btn:hover { color: var(--ink); }
 
 .step-empty { color: var(--muted); }
 .svc-list:empty { display: none; }
@@ -438,6 +456,7 @@ body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
   .family-photo { max-width: none; aspect-ratio: 4 / 3; margin-bottom: 32px; }
   .quotes, .places { grid-template-columns: 1fr; }
   .master-meta { margin-left: 36px; width: 100%; }
+  .master-else { padding-left: 36px; }
   .foot-small { margin-left: 0; }
 
   .bar {
