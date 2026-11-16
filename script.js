@@ -274,6 +274,38 @@
     });
   });
 
+  // ---------- Светлая и тёмная тема ----------
+  // Без выбора сайт следует теме системы. Кнопка переключает на противоположную
+  // той, что сейчас на экране. Если выбор совпал с системой, просто снова
+  // следуем системе и ничего не храним.
+  var THEME_KEY = 'color-scheme';
+  var schemeMeta = document.querySelector('meta[name="color-scheme"]');
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  var themeButton = document.getElementById('theme-btn');
+
+  function renderedScheme() {
+    var c = schemeMeta.content;
+    if (c === 'dark' || c === 'light') return c;
+    return systemDark.matches ? 'dark' : 'light';
+  }
+
+  themeButton.addEventListener('click', function () {
+    var target = renderedScheme() === 'dark' ? 'light' : 'dark';
+    var system = systemDark.matches ? 'dark' : 'light';
+    if (target === system) {
+      try { localStorage.removeItem(THEME_KEY); } catch (e) {}
+      schemeMeta.content = 'light dark';
+    } else {
+      try { localStorage.setItem(THEME_KEY, target); } catch (e) {}
+      schemeMeta.content = target;
+    }
+  });
+
+  // Если тему поменяли в другой вкладке
+  window.addEventListener('storage', function (event) {
+    if (event.key === THEME_KEY) schemeMeta.content = event.newValue || 'light dark';
+  });
+
   // Вспоминаем зал, который гость выбрал в прошлый раз
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}

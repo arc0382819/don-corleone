@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Don Corleone — барбершоп в Ломоносове</title>
   <meta name="description" content="Барбершоп Don Corleone в Ломоносове: два зала, четыре мастера, каждый день с 10:00 до 22:00. Цены, мастера и онлайн-запись.">
-  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try { var s = localStorage.getItem('color-scheme'); if (s) document.querySelector('meta[name="color-scheme"]').content = s; } catch (e) {}
+  </script>
+  <meta name="theme-color" content="#f6eedb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,6 +34,11 @@
         <a href="#zapis">Мастера</a>
         <a href="#adresa">Адреса</a>
       </nav>
+
+      <button type="button" class="theme-btn" id="theme-btn">
+        <span class="to-dark">Тёмная тема</span>
+        <span class="to-light">Светлая тема</span>
+      </button>
 
       <a class="btn" href="#zapis">Записаться</a>
     </div>
