@@ -317,5 +317,83 @@
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   setBranch(saved === 'f' ? 'f' : 'd', false);
 
+  // ---------- Стартовый экран «Выберите зал» ----------
+  // Показываем один раз за визит (пока открыта вкладка).
+  var chooser = document.getElementById('choose');
+  var CHOSEN = 'don-corleone-chosen';
+  var seen = false;
+  try { seen = sessionStorage.getItem(CHOSEN) === '1'; } catch (e) {}
+
+  // Умеет ли браузер анимировать исчезновение диалога сам.
+  // Firefox говорит «да», но не умеет, поэтому проверяем на деле.
+  var displayTransition;
+  function canTransitionDisplay() {
+    if (displayTransition !== undefined) return displayTransition;
+    if (!(window.CSS && CSS.supports && CSS.supports('transition-behavior', 'allow-discrete'))) {
+      displayTransition = false;
+      return false;
+    }
+    var probe = document.createElement('div');
+    probe.style.cssText = 'transition: display 1s allow-discrete !important; display: block;';
+    document.body.appendChild(probe);
+    void getComputedStyle(probe).display;
+    probe.style.display = 'none';
+    displayTransition = getComputedStyle(probe).display === 'block';
+    probe.remove();
+    return displayTransition;
+  }
+  function supportsTopLayerExit() {
+    return !!(window.CSS && CSS.supports && CSS.supports('overlay', 'auto')) && canTransitionDisplay();
+  }
+
+  function closeChooser() {
+    try { sessionStorage.setItem(CHOSEN, '1'); } catch (e) {}
+    body.classList.add('entered');
+    chooser.classList.add('leaving');
+
+    if (supportsTopLayerExit()) {
+      chooser.close();
+      return;
+    }
+    // Запасной путь: сначала проигрываем анимацию, потом закрываем
+    chooser.setAttribute('data-closing', '');
+    var finish = function () {
+      if (!chooser.hasAttribute('data-closing')) return;
+      chooser.removeAttribute('data-closing');
+      chooser.close();
+    };
+    var anims = chooser.getAnimations ? chooser.getAnimations({ subtree: true }) : [];
+    if (!anims.length) { finish(); return; }
+    Promise.race([
+      Promise.allSettled(anims.map(function (a) { return a.finished; })),
+      new Promise(function (r) { setTimeout(r, 1500); })
+    ]).then(finish);
+  }
+
+  if (chooser && typeof chooser.showModal === 'function') {
+    chooser.querySelectorAll('.card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var branch = card.getAttribute('data-set');
+        setBranch(branch, false);
+        var m = checkedValue('master');
+        if (m && m.getAttribute('data-branch') !== branch) {
+          m.checked = false;
+          resetServices();
+          update();
+        }
+        card.classList.add('picked');
+        closeChooser();
+      });
+    });
+
+    // Esc: остаёмся в текущем зале, но экран уходит с той же анимацией
+    chooser.addEventListener('cancel', function (event) {
+      event.preventDefault();
+      closeChooser();
+    });
+
+    if (!seen) chooser.showModal();
+  }
+
   update();
 })();

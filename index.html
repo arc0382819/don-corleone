@@ -19,6 +19,30 @@
 
   <a class="skip" href="#zapis">К онлайн-записи</a>
 
+  <!-- Стартовый экран: выбор зала. Открывается при заходе на сайт, один раз за визит -->
+  <dialog class="choose" id="choose" aria-labelledby="choose-h">
+    <img class="choose-bg" src="img/zal-1.webp" width="1280" height="960" alt="">
+    <div class="choose-in" tabindex="-1" autofocus>
+      <p class="choose-mark">Don Corleone</p>
+      <h2 id="choose-h">Выберите зал</h2>
+      <p class="choose-sub">Два барбершопа в&nbsp;Ломоносове, каждый день с&nbsp;10:00 до&nbsp;22:00. Цены и&nbsp;мастера в&nbsp;залах разные.</p>
+      <div class="choose-cards">
+        <button type="button" class="card" data-set="d">
+          <span class="card-pic"><img class="card-img" src="img/zal-1.webp" srcset="img/zal-1-480.webp 480w, img/zal-1.webp 1280w" sizes="(max-width: 700px) 100vw, 420px" width="1280" height="960" alt="Зал на Дворцовом: кожаные кресла и зелёная стена с волнами"></span>
+          <span class="card-addr">Дворцовый проспект, 14/9</span>
+          <span class="card-tel">+7 952 261-66-99</span>
+          <span class="card-go">Перейти в&nbsp;зал</span>
+        </button>
+        <button type="button" class="card" data-set="f">
+          <span class="card-pic"><img class="card-img" src="img/rabota-1.webp" srcset="img/rabota-1-480.webp 480w, img/rabota-1.webp 853w" sizes="(max-width: 700px) 100vw, 420px" width="853" height="1280" alt="Барбер укладывает волосы клиенту"></span>
+          <span class="card-addr">Улица Федюнинского, 14к1</span>
+          <span class="card-tel">+7 950 022-06-30</span>
+          <span class="card-go">Перейти в&nbsp;зал</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
   <header class="top">
     <div class="wrap top-in">
       <a class="mark" href="#" aria-label="Don Corleone, в начало страницы">Don Corleone</a>

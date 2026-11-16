@@ -481,7 +481,102 @@ body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
   .rows .n, .svc .n { flex: 1 1 60%; }
 }
 
+/* ---------- Стартовый экран: выбор зала ----------
+   Всегда тёмный, как логотип, независимо от темы сайта. */
+
+.choose {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%; max-width: none; max-height: none;
+  margin: 0; padding: 0; border: 0;
+  background: #000000; color: var(--ink-d);
+  color-scheme: dark; accent-color: var(--accent-d);
+  overflow: auto;
+  opacity: 0;
+  /* Выход: диалог растворяется, оставаясь поверх страницы */
+  transition-property: opacity, display, overlay;
+  transition-duration: 0.8s;
+  transition-timing-function: ease;
+  transition-behavior: allow-discrete;
+}
+:is(.choose[open]):where(:not([data-closing])) {
+  opacity: 1;
+  @starting-style { opacity: 0; }
+}
+body:has(.choose[open]) { overflow: hidden; }
+
+.choose-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.28; filter: saturate(0.6);
+  transition: transform 0.9s ease, opacity 0.9s ease;
+}
+.choose.leaving .choose-bg { transform: scale(1.08); opacity: 0; }
+
+.choose-in {
+  position: relative;
+  min-height: 100%;
+  display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: 28px;
+  max-width: 1240px; margin: 0 auto;
+  padding: clamp(32px, 6vw, 80px) var(--pad);
+  outline: none; /* фокус при открытии ставим сюда, чтобы не рисовать рамку на карточке */
+}
+.choose-mark { font-family: var(--display); font-weight: 800; font-size: 22px; }
+.choose h2 {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(40px, 6.5vw, 88px);
+  line-height: 1; letter-spacing: -0.02em;
+}
+.choose-sub { color: var(--muted-d); max-width: 30em; margin-top: -8px; }
+
+.choose-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 420px));
+  gap: 24px;
+  margin-top: 8px;
+}
+.card {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0;
+  text-align: left; cursor: pointer;
+  display: grid; gap: 8px;
+  min-width: 0; /* иначе кнопка растягивается под исходный размер фото */
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.card-pic { display: block; width: 100%; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 3; }
+.card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.card:hover .card-img, .card:focus-visible .card-img { transform: scale(1.04); }
+.card-addr { font-family: var(--display); font-weight: 700; font-size: 24px; line-height: 1.15; margin-top: 10px; }
+.card-tel { color: var(--accent-d); font-variant-numeric: tabular-nums; }
+.card-go {
+  display: flex; justify-content: space-between;
+  border-top: 1px solid var(--line-d);
+  padding-top: 12px; margin-top: 6px;
+  font-weight: 600;
+}
+.card-go::after { content: "→"; }
+.card:hover .card-go { color: var(--accent-d); }
+
+/* Выбор сделан: выбранная карточка чуть вырастает, остальные уходят */
+.choose.leaving .card { opacity: 0; transform: translateY(16px); pointer-events: none; }
+.choose.leaving .card.picked { opacity: 1; transform: scale(1.05); }
+
+/* Страница появляется после стартового экрана */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+body.entered .top, body.entered .hero > * { animation: rise 0.7s ease both; }
+body.entered .hero-text { animation-delay: 0.15s; }
+
+@media (max-width: 700px) {
+  .choose-cards { grid-template-columns: 1fr; }
+  .card-pic { aspect-ratio: 16 / 9; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .switched .p b, .switched .family-price b { animation: none; }
+  .choose { transition-duration: 0.15s; }
+  .choose-bg, .card, .card-img { transition: none; }
+  .choose.leaving .choose-bg,
+  .choose.leaving .card,
+  .choose.leaving .card.picked,
+  .card:hover .card-img { transform: none; }
+  body.entered .top, body.entered .hero > * { animation: none; }
 }
