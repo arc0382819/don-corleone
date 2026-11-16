@@ -4,6 +4,23 @@
    Светлая: кремовая бумага подарочного сертификата, тёмная медь, эспрессо.
    Бордо со второй эмблемы с барбер-пулом одинаковое в обеих. */
 
+/* ---------- Шрифты: лежат в папке сайта, без обращения к Google ----------
+   Для каждого начертания два файла: латиница и кириллица,
+   браузер качает только нужный. */
+
+@font-face { font-family: "Bitter"; font-weight: 500; font-display: swap; src: url("fonts/Bitter-500-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Bitter"; font-weight: 500; font-display: swap; src: url("fonts/Bitter-500-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Bitter"; font-weight: 700; font-display: swap; src: url("fonts/Bitter-700-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Bitter"; font-weight: 700; font-display: swap; src: url("fonts/Bitter-700-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Bitter"; font-weight: 800; font-display: swap; src: url("fonts/Bitter-800-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Bitter"; font-weight: 800; font-display: swap; src: url("fonts/Bitter-800-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Golos Text"; font-weight: 400; font-display: swap; src: url("fonts/GolosText-400-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Golos Text"; font-weight: 400; font-display: swap; src: url("fonts/GolosText-400-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Golos Text"; font-weight: 500; font-display: swap; src: url("fonts/GolosText-500-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Golos Text"; font-weight: 500; font-display: swap; src: url("fonts/GolosText-500-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Golos Text"; font-weight: 600; font-display: swap; src: url("fonts/GolosText-600-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Golos Text"; font-weight: 600; font-display: swap; src: url("fonts/GolosText-600-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
 :root {
   /* Сырые цвета: светлая и тёмная версии */
   --bg-l: #f6eedb;       --bg-d: #000000;
@@ -64,7 +81,12 @@
 :root:has(> head > meta[name="color-scheme"][content="dark"]) { color-scheme: dark; }
 :root:has(> head > meta[name="color-scheme"][content="light"]) { color-scheme: light; }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  /* Пока шрифт грузится, запасной подгоняется под его высоту букв,
+     чтобы текст не дёргался при подмене */
+  font-size-adjust: from-font;
+}
 
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 

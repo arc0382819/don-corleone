@@ -11,9 +11,8 @@
   </script>
   <meta name="theme-color" content="#f6eedb" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/Bitter-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/GolosText-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-branch="d">
@@ -47,7 +46,7 @@
   <main>
 
     <section class="hero wrap">
-      <img class="hero-emblem" src="img/emblem.jpg" width="630" height="630"
+      <img class="hero-emblem" src="img/emblem.webp" width="630" height="630"
            alt="Эмблема Don Corleone: силуэт мужчины в шляпе с сигарой на медном круге, надпись Lomonosov Barbershop"
            fetchpriority="high">
       <div class="hero-text">
@@ -66,12 +65,13 @@
     </section>
 
     <section class="gallery wrap" aria-label="Фото из барбершопа">
-      <figure class="g g-big"><img src="img/zal-1.jpg" width="1280" height="960" loading="lazy" alt="Зал на Дворцовом: кожаные кресла, тёмная мебель и зелёная стена с волнами"></figure>
-      <figure class="g g-tall"><img src="img/rabota-1.jpg" width="853" height="1280" loading="lazy" alt="Барбер в белой рубашке укладывает волосы клиенту"></figure>
-      <figure class="g g-tall"><img src="img/rabota-3.jpg" width="817" height="1280" loading="lazy" alt="Готовая стрижка с плавным переходом на висках"></figure>
-      <figure class="g g-tall"><img src="img/deti-1.jpg" width="960" height="1280" loading="lazy" alt="Улыбающийся мальчик после детской стрижки"></figure>
-      <figure class="g g-big"><img src="img/boroda.jpg" width="1280" height="853" loading="lazy" alt="Мастер оформляет бороду машинкой"></figure>
-      <figure class="g g-tall"><img src="img/sertifikat.jpg" width="960" height="1280" loading="lazy" alt="Подарочный сертификат Don Corleone на 5000 рублей"></figure>
+      <!-- Первый ряд виден сразу на ноутбуке, поэтому без loading="lazy" -->
+      <figure class="g g-big"><img src="img/zal-1.webp" srcset="img/zal-1-480.webp 480w, img/zal-1.webp 1280w" sizes="(max-width: 820px) 100vw, (min-width: 1240px) 600px, 50vw" width="1280" height="960" alt="Зал на Дворцовом: кожаные кресла, тёмная мебель и зелёная стена с волнами"></figure>
+      <figure class="g g-tall"><img src="img/rabota-1.webp" srcset="img/rabota-1-480.webp 480w, img/rabota-1.webp 853w" sizes="(min-width: 1240px) 300px, 50vw" width="853" height="1280" alt="Барбер в белой рубашке укладывает волосы клиенту"></figure>
+      <figure class="g g-tall"><img src="img/rabota-3.webp" srcset="img/rabota-3-480.webp 480w, img/rabota-3.webp 817w" sizes="(min-width: 1240px) 300px, 50vw" width="817" height="1280" alt="Готовая стрижка с плавным переходом на висках"></figure>
+      <figure class="g g-tall"><img src="img/deti-1.webp" srcset="img/deti-1-480.webp 480w, img/deti-1.webp 960w" sizes="(min-width: 1240px) 300px, 50vw" width="960" height="1280" loading="lazy" alt="Улыбающийся мальчик после детской стрижки"></figure>
+      <figure class="g g-big"><img src="img/boroda.webp" srcset="img/boroda-480.webp 480w, img/boroda.webp 1280w" sizes="(max-width: 820px) 100vw, (min-width: 1240px) 600px, 50vw" width="1280" height="853" loading="lazy" alt="Мастер оформляет бороду машинкой"></figure>
+      <figure class="g g-tall"><img src="img/sertifikat.webp" srcset="img/sertifikat-480.webp 480w, img/sertifikat.webp 960w" sizes="(min-width: 1240px) 300px, 50vw" width="960" height="1280" loading="lazy" alt="Подарочный сертификат Don Corleone на 5000 рублей"></figure>
     </section>
 
     <section class="sec wrap" id="uslugi">
@@ -136,7 +136,7 @@
 
     <section class="family" aria-labelledby="family-h">
       <div class="wrap family-in">
-        <img class="family-photo" src="img/otec-syn.jpg" width="960" height="1280" loading="lazy"
+        <img class="family-photo" src="img/otec-syn.webp" srcset="img/otec-syn-480.webp 480w, img/otec-syn.webp 960w" sizes="(max-width: 820px) 100vw, 380px" width="960" height="1280" loading="lazy"
              alt="Два барбера одновременно стригут отца и сына в соседних креслах">
         <div class="family-text">
           <h2 id="family-h">Отец + сын</h2>
@@ -253,7 +253,7 @@
 
   <footer class="foot">
     <div class="wrap foot-in">
-      <img class="foot-emblem" src="img/emblem-pole.jpg" width="500" height="500" loading="lazy" alt="Вторая эмблема Corleone: барбер-пул, две звезды и усы на бордовом круге">
+      <img class="foot-emblem" src="img/emblem-pole.webp" width="500" height="500" loading="lazy" alt="Вторая эмблема Corleone: барбер-пул, две звезды и усы на бордовом круге">
       <p class="foot-mark">Don Corleone</p>
       <p><a href="https://t.me/DonCorleoneLomonosov" target="_blank" rel="noopener">Телеграм-канал</a></p>
       <p class="foot-small">Концепт сайта. Цены и&nbsp;фото с&nbsp;Яндекс Карт, ноябрь 2026&nbsp;года.</p>
