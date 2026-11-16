@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Don Corleone — барбершоп в Ломоносове</title>
+  <meta name="description" content="Барбершоп Don Corleone в Ломоносове: два зала, четыре мастера, каждый день с 10:00 до 22:00. Цены, мастера и онлайн-запись.">
+  <meta name="theme-color" content="#000000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-branch="d">
+
+  <a class="skip" href="#zapis">К онлайн-записи</a>
+
+  <header class="top">
+    <div class="wrap top-in">
+      <a class="mark" href="#" aria-label="Don Corleone, в начало страницы">Don Corleone</a>
+
+      <div class="switch" role="group" aria-label="Выберите зал">
+        <button type="button" data-set="d" aria-pressed="true">Дворцовый, 14/9</button>
+        <button type="button" data-set="f" aria-pressed="false">Федюнинского, 14к1</button>
+      </div>
+
+      <nav class="nav" aria-label="Разделы">
+        <a href="#uslugi">Цены</a>
+        <a href="#zapis">Мастера</a>
+        <a href="#adresa">Адреса</a>
+      </nav>
+
+      <a class="btn" href="#zapis">Записаться</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero wrap">
+      <img class="hero-emblem" src="img/emblem.jpg" width="630" height="630"
+           alt="Эмблема Don Corleone: силуэт мужчины в шляпе с сигарой на медном круге, надпись Lomonosov Barbershop"
+           fetchpriority="high">
+      <div class="hero-text">
+        <h1>Стрижка, от которой невозможно отказаться</h1>
+        <p class="orn" aria-hidden="true">★</p>
+        <p class="hero-facts">
+          Барбершоп в&nbsp;Ломоносове. Два зала, четыре мастера, каждый день с&nbsp;10:00 до&nbsp;22:00.
+          Оценка 5,0 на&nbsp;Яндекс Картах.
+        </p>
+        <div class="hero-act">
+          <a class="btn btn-big" href="#zapis">Выбрать мастера</a>
+          <a class="hero-tel d-only" href="tel:+79522616699">+7 952 261-66-99</a>
+          <a class="hero-tel f-only" href="tel:+79500220630">+7 950 022-06-30</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery wrap" aria-label="Фото из барбершопа">
+      <figure class="g g-big"><img src="img/zal-1.jpg" width="1280" height="960" loading="lazy" alt="Зал на Дворцовом: кожаные кресла, тёмная мебель и зелёная стена с волнами"></figure>
+      <figure class="g g-tall"><img src="img/rabota-1.jpg" width="853" height="1280" loading="lazy" alt="Барбер в белой рубашке укладывает волосы клиенту"></figure>
+      <figure class="g g-tall"><img src="img/rabota-3.jpg" width="817" height="1280" loading="lazy" alt="Готовая стрижка с плавным переходом на висках"></figure>
+      <figure class="g g-tall"><img src="img/deti-1.jpg" width="960" height="1280" loading="lazy" alt="Улыбающийся мальчик после детской стрижки"></figure>
+      <figure class="g g-big"><img src="img/boroda.jpg" width="1280" height="853" loading="lazy" alt="Мастер оформляет бороду машинкой"></figure>
+      <figure class="g g-tall"><img src="img/sertifikat.jpg" width="960" height="1280" loading="lazy" alt="Подарочный сертификат Don Corleone на 5000 рублей"></figure>
+    </section>
+
+    <section class="sec wrap" id="uslugi">
+      <div class="sec-head">
+        <h2>Услуги и&nbsp;цены</h2>
+        <p class="sec-note">
+          <span class="d-only">Дворцовый, 14/9. Здесь стригут Pro-барберы.</span>
+          <span class="f-only">Федюнинского, 14к1.</span>
+          Цены в&nbsp;залах разные, зал меняется переключателем наверху.
+        </p>
+      </div>
+
+      <div class="sec-body price">
+
+        <h3>Стрижки</h3>
+        <ul class="rows">
+          <li data-svc="classic"><span class="n">Классическая стрижка</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;700</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
+          <li data-svc="long"><span class="n">Удлинённая стрижка</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;000</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="clipper"><span class="n">Стрижка под одну насадку</span><span class="dots"></span><span class="p"><b class="d-only">800</b><b class="f-only">700</b>&nbsp;₽</span></li>
+          <li data-svc="kids"><span class="n">Детская стрижка, до&nbsp;10&nbsp;лет</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;300</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="kids-long"><span class="n">Удлинённая детская, до&nbsp;10&nbsp;лет</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;500</b><b class="f-only">1&nbsp;300</b>&nbsp;₽</span></li>
+          <li data-svc="head-shave"><span class="n">Королевское бритьё головы</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;800</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
+          <li data-svc="shaver"><span class="n">Бритьё шейвером</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;000</b><b class="f-only">900</b>&nbsp;₽</span></li>
+        </ul>
+
+        <h3>Борода</h3>
+        <ul class="rows">
+          <li data-svc="beard"><span class="n">Оформление бороды и&nbsp;усов</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;300</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="face-shave"><span class="n">Королевское бритьё лица</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;800</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
+        </ul>
+
+        <h3>Комплексы</h3>
+        <ul class="rows">
+          <li data-svc="father-son"><span class="n">Отец + сын, до&nbsp;10&nbsp;лет</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="cut-beard"><span class="n">Стрижка и&nbsp;оформление бороды</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="cut-shave"><span class="n">Стрижка и&nbsp;королевское бритьё лица</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;900</b><b class="f-only">2&nbsp;600</b>&nbsp;₽</span></li>
+          <li data-svc="face-care"><span class="n">Комплексный уход за&nbsp;лицом</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;200</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+        </ul>
+
+        <h3>Камуфляж седины</h3>
+        <ul class="rows">
+          <li data-svc="camo-head"><span class="n">Камуфляж головы</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;200</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="camo-beard"><span class="n">Камуфляж бороды</span><span class="dots"></span><span class="p"><b class="d-only">900</b><b class="f-only">800</b>&nbsp;₽</span></li>
+          <li data-svc="camo-full"><span class="n">Камуфляж головы и&nbsp;бороды</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;800</b><b class="f-only">1&nbsp;600</b>&nbsp;₽</span></li>
+        </ul>
+
+        <h3>Воск</h3>
+        <ul class="rows">
+          <li data-svc="wax-beard"><span class="n">Воск: борода по&nbsp;контуру</span><span class="dots"></span><span class="p"><b>500</b>&nbsp;₽</span></li>
+          <li data-svc="wax-zone"><span class="n">Воск: брови, уши или нос</span><span class="dots"></span><span class="p"><b>300</b>&nbsp;₽</span></li>
+          <li data-svc="wax-3"><span class="n">Воск: три зоны сразу</span><span class="dots"></span><span class="p"><b>700</b>&nbsp;₽</span></li>
+        </ul>
+
+        <h3>Уход</h3>
+        <ul class="rows">
+          <li data-svc="mask"><span class="n">Чёрная маска</span><span class="dots"></span><span class="p"><b class="d-only">700</b><b class="f-only">600</b>&nbsp;₽</span></li>
+          <li data-svc="scrub"><span class="n">Скраб</span><span class="dots"></span><span class="p"><b class="d-only">300</b><b class="f-only">200</b>&nbsp;₽</span></li>
+        </ul>
+
+      </div>
+    </section>
+
+    <section class="family" aria-labelledby="family-h">
+      <div class="wrap family-in">
+        <img class="family-photo" src="img/otec-syn.jpg" width="960" height="1280" loading="lazy"
+             alt="Два барбера одновременно стригут отца и сына в соседних креслах">
+        <div class="family-text">
+          <h2 id="family-h">Отец + сын</h2>
+          <p>Семейная классика. Приходите вдвоём: стрижка для отца и&nbsp;для сына до&nbsp;10&nbsp;лет, чтобы выглядеть отлично и&nbsp;провести время вместе.</p>
+          <p class="family-price"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽ за&nbsp;двоих</p>
+          <a class="btn btn-light" href="#zapis" data-pick="father-son">Записаться вдвоём</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec wrap" id="zapis">
+      <div class="sec-head">
+        <h2>Запись к&nbsp;мастеру</h2>
+        <p class="sec-note">Выберите мастера и&nbsp;услуги. Время выберете в&nbsp;онлайн-записи барбершопа, той же, что на&nbsp;Яндекс Картах.</p>
+      </div>
+
+      <form class="sec-body book" id="book" novalidate>
+
+        <fieldset class="step">
+          <legend><span class="step-n">1</span>Мастер</legend>
+          <div class="pick-list">
+            <label class="pick master">
+              <input type="radio" name="master" value="farid" data-branch="d">
+              <span class="master-name">Фарид</span>
+              <span class="master-meta">Pro-барбер, Дворцовый. 5,0 по&nbsp;501&nbsp;оценке</span>
+            </label>
+            <label class="pick master">
+              <input type="radio" name="master" value="feruz" data-branch="d">
+              <span class="master-name">Феруз</span>
+              <span class="master-meta">Pro-барбер, Дворцовый. 5,0 по&nbsp;23&nbsp;оценкам</span>
+            </label>
+            <label class="pick master">
+              <input type="radio" name="master" value="khurshid" data-branch="f">
+              <span class="master-name">Хуршид</span>
+              <span class="master-meta">Барбер, Федюнинского. 5,0 по&nbsp;233&nbsp;оценкам</span>
+            </label>
+            <label class="pick master">
+              <input type="radio" name="master" value="bos" data-branch="f">
+              <span class="master-name">Бос</span>
+              <span class="master-meta">Барбер, Федюнинского. 5,0 по&nbsp;141&nbsp;оценке</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" id="step-svc" disabled>
+          <legend><span class="step-n">2</span>Услуги</legend>
+          <p class="step-empty" id="svc-empty">Сначала выберите мастера, и&nbsp;здесь появятся его услуги с&nbsp;ценами.</p>
+          <p class="step-hint">Можно отметить несколько, например стрижку и&nbsp;бороду.</p>
+          <div class="pick-list svc-list" id="svc-list"></div>
+        </fieldset>
+
+        <div class="step step-go">
+          <p class="step-title"><span class="step-n">3</span>Время</p>
+          <p class="summary" id="summary" aria-live="polite">Выберите мастера и&nbsp;услуги.</p>
+          <a class="btn btn-big" id="go" href="#zapis" target="_blank" rel="noopener" aria-disabled="true">Выбрать время</a>
+          <p class="go-note">Онлайн-запись откроется в&nbsp;новой вкладке.</p>
+        </div>
+
+      </form>
+    </section>
+
+    <section class="sec wrap" id="otzyvy">
+      <div class="sec-head">
+        <h2>Гости о&nbsp;нас</h2>
+        <p class="sec-note">Отзывы с&nbsp;Яндекс Карт, как написаны.</p>
+      </div>
+
+      <div class="sec-body quotes">
+        <figure class="quote quote-big">
+          <blockquote>Ребенок ходит стричься к&nbsp;данному мастеру с&nbsp;1&nbsp;года, в&nbsp;этом году нам уже будет 6&nbsp;лет.</blockquote>
+          <figcaption>Юлия Павлова, о&nbsp;мастере Фариде</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Настоящий мужской разговор, четкая стрижка и&nbsp;идеально выбритая линия.</blockquote>
+          <figcaption>Валерия Ковтун, зал на&nbsp;Федюнинского</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Барбершоп, где ценят время клиента. Записался через приложение, пришёл — меня уже ждали.</blockquote>
+          <figcaption>Гость зала на&nbsp;Дворцовом</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sec wrap" id="adresa">
+      <div class="sec-head">
+        <h2>Адреса</h2>
+        <p class="sec-note">Оба зала работают каждый день с&nbsp;10:00 до&nbsp;22:00. Принимаем карты, наличные и&nbsp;переводы. Есть парковка, Wi-Fi и&nbsp;подарочные сертификаты.</p>
+      </div>
+
+      <div class="sec-body places">
+        <article class="place" data-b="d">
+          <h3>Дворцовый проспект, 14/9</h3>
+          <p class="place-where">Ломоносов, второй этаж, помещение&nbsp;16</p>
+          <a class="place-tel" href="tel:+79522616699">+7 952 261-66-99</a>
+          <ul class="place-links">
+            <li><a href="https://yandex.ru/maps/org/don_corleone/103205529268/" target="_blank" rel="noopener">Открыть на&nbsp;Яндекс Картах</a></li>
+            <li><a href="https://wa.me/79522616699" target="_blank" rel="noopener">Написать в&nbsp;WhatsApp</a></li>
+          </ul>
+        </article>
+
+        <article class="place" data-b="f">
+          <h3>Улица Федюнинского, 14к1</h3>
+          <p class="place-where">Ломоносов</p>
+          <a class="place-tel" href="tel:+79500220630">+7 950 022-06-30</a>
+          <ul class="place-links">
+            <li><a href="https://yandex.ru/maps/org/don_corleone/197876531869/" target="_blank" rel="noopener">Открыть на&nbsp;Яндекс Картах</a></li>
+            <li><a href="https://wa.me/79500220630" target="_blank" rel="noopener">Написать в&nbsp;WhatsApp</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <img class="foot-emblem" src="img/emblem-pole.jpg" width="500" height="500" loading="lazy" alt="Вторая эмблема Corleone: барбер-пул, две звезды и усы на бордовом круге">
+      <p class="foot-mark">Don Corleone</p>
+      <p><a href="https://t.me/DonCorleoneLomonosov" target="_blank" rel="noopener">Телеграм-канал</a></p>
+      <p class="foot-small">Концепт сайта. Цены и&nbsp;фото с&nbsp;Яндекс Карт, ноябрь 2026&nbsp;года.</p>
+    </div>
+  </footer>
+
+  <div class="bar">
+    <a class="bar-call d-only" href="tel:+79522616699" aria-label="Позвонить в зал на Дворцовом">Позвонить</a>
+    <a class="bar-call f-only" href="tel:+79500220630" aria-label="Позвонить в зал на Федюнинского">Позвонить</a>
+    <a class="bar-book" href="#zapis">Записаться</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
