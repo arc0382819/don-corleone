@@ -119,11 +119,13 @@
       el.querySelectorAll('li').forEach(function (li) {
         var d = li.querySelector('.p b.d-only, .p b:not(.f-only)');
         var f = li.querySelector('.p b.f-only, .p b:not(.d-only)');
+        var same = li.getAttribute('data-t') || '';
         list.push({
           id: li.getAttribute('data-svc'),
           group: group,
           name: li.querySelector('.n').textContent.replace(/\s+/g, ' ').trim(),
-          price: { d: d.textContent.trim(), f: f.textContent.trim() }
+          price: { d: d.textContent.trim(), f: f.textContent.trim() },
+          time: { d: li.getAttribute('data-t-d') || same, f: li.getAttribute('data-t-f') || same }
         });
       });
     });
@@ -177,6 +179,10 @@
       n.className = 'n';
       n.textContent = s.name;
 
+      var t = document.createElement('span');
+      t.className = 't';
+      t.textContent = (s.time[branch] || '').replace(/ /g, ' ');
+
       var dots = document.createElement('span');
       dots.className = 'dots';
 
@@ -184,7 +190,9 @@
       p.className = 'p';
       p.textContent = s.price[branch] + ' ₽';
 
-      label.append(input, n, dots, p);
+      label.append(input, n);
+      if (t.textContent) label.append(t);
+      label.append(dots, p);
       svcList.appendChild(label);
     });
 
@@ -342,6 +350,51 @@
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   setBranch(saved === 'f' ? 'f' : 'd', false);
+
+  // ---------- «Открыто сейчас» ----------
+  // Оба зала работают каждый день с 10:00 до 22:00 по московскому времени.
+  // Время берём именно по Москве, а не по часам посетителя.
+  var OPEN_HOUR = 10;
+  var CLOSE_HOUR = 22;
+
+  function moscowNow() {
+    if (window.Temporal && Temporal.Now && Temporal.Now.zonedDateTimeISO) {
+      var z = Temporal.Now.zonedDateTimeISO('Europe/Moscow');
+      return { h: z.hour, m: z.minute };
+    }
+    var parts = new Intl.DateTimeFormat('ru-RU', {
+      timeZone: 'Europe/Moscow', hour: 'numeric', minute: 'numeric', hourCycle: 'h23'
+    }).formatToParts(new Date());
+    var get = function (type) {
+      var p = parts.find(function (x) { return x.type === type; });
+      return p ? parseInt(p.value, 10) : 0;
+    };
+    return { h: get('hour'), m: get('minute') };
+  }
+
+  function updateOpenStatus() {
+    var now = moscowNow();
+    var mins = now.h * 60 + now.m;
+    var open = mins >= OPEN_HOUR * 60 && mins < CLOSE_HOUR * 60;
+    var text;
+    if (open) {
+      var left = CLOSE_HOUR * 60 - mins;
+      text = left <= 60
+        ? 'Открыто, закроемся в ' + CLOSE_HOUR + ':00, через ' + left + ' мин'
+        : 'Открыто до ' + CLOSE_HOUR + ':00';
+    } else if (mins < OPEN_HOUR * 60) {
+      text = 'Закрыто, откроемся в ' + OPEN_HOUR + ':00';
+    } else {
+      text = 'Закрыто, откроемся завтра в ' + OPEN_HOUR + ':00';
+    }
+    document.querySelectorAll('[data-open]').forEach(function (el) {
+      el.textContent = text;
+      el.classList.toggle('is-open', open);
+    });
+  }
+
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 60 * 1000);
 
   // ---------- Стартовый экран «Выберите зал» ----------
   // Показываем один раз за визит (пока открыта вкладка).

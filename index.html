@@ -31,12 +31,14 @@
           <span class="card-pic"><img class="card-img" src="img/zal-1.webp" srcset="img/zal-1-480.webp 480w, img/zal-1.webp 1280w" sizes="(max-width: 700px) 100vw, 420px" width="1280" height="960" alt="Зал на Дворцовом: кожаные кресла и зелёная стена с волнами"></span>
           <span class="card-addr">Дворцовый проспект, 14/9</span>
           <span class="card-tel">+7 952 261-66-99</span>
+          <span class="open-now" data-open></span>
           <span class="card-go">Перейти в&nbsp;зал</span>
         </button>
         <button type="button" class="card" data-set="f">
           <span class="card-pic"><img class="card-img" src="img/rabota-1.webp" srcset="img/rabota-1-480.webp 480w, img/rabota-1.webp 853w" sizes="(max-width: 700px) 100vw, 420px" width="853" height="1280" alt="Барбер укладывает волосы клиенту"></span>
           <span class="card-addr">Улица Федюнинского, 14к1</span>
           <span class="card-tel">+7 950 022-06-30</span>
+          <span class="open-now" data-open></span>
           <span class="card-go">Перейти в&nbsp;зал</span>
         </button>
       </div>
@@ -55,6 +57,7 @@
       <nav class="nav" aria-label="Разделы">
         <a href="#uslugi">Цены</a>
         <a href="#zapis">Мастера</a>
+        <a href="#deti">Детям</a>
         <a href="#adresa">Адреса</a>
       </nav>
 
@@ -78,13 +81,25 @@
         <p class="orn" aria-hidden="true">★</p>
         <p class="hero-facts">
           Барбершоп в&nbsp;Ломоносове. Два зала, четыре мастера, каждый день с&nbsp;10:00 до&nbsp;22:00.
-          Оценка 5,0 на&nbsp;Яндекс Картах.
+          Классическая стрижка <b class="d-only">1&nbsp;700&nbsp;₽</b><b class="f-only">1&nbsp;500&nbsp;₽</b>, оформление бороды <b class="d-only">1&nbsp;300&nbsp;₽</b><b class="f-only">1&nbsp;000&nbsp;₽</b>.
         </p>
+        <div class="proof">
+          <a class="rating d-only" href="https://yandex.ru/maps/org/don_corleone/103205529268/reviews/" target="_blank" rel="noopener">
+            <span class="rating-num">5,0</span><span class="rating-stars" aria-hidden="true">★★★★★</span>
+            <span class="rating-src">421 оценка на&nbsp;Яндекс Картах</span>
+          </a>
+          <a class="rating f-only" href="https://yandex.ru/maps/org/don_corleone/197876531869/reviews/" target="_blank" rel="noopener">
+            <span class="rating-num">5,0</span><span class="rating-stars" aria-hidden="true">★★★★★</span>
+            <span class="rating-src">511 оценок на&nbsp;Яндекс Картах</span>
+          </a>
+          <span class="award d-only">Хорошее место 2026 по&nbsp;версии Яндекса</span>
+        </div>
         <div class="hero-act">
           <a class="btn btn-big" href="#zapis">Выбрать мастера</a>
           <a class="hero-tel d-only" href="tel:+79522616699">+7 952 261-66-99</a>
           <a class="hero-tel f-only" href="tel:+79500220630">+7 950 022-06-30</a>
         </div>
+        <p class="open-now" data-open></p>
       </div>
     </section>
 
@@ -95,7 +110,7 @@
       <figure class="g g-tall"><img src="img/rabota-3.webp" srcset="img/rabota-3-480.webp 480w, img/rabota-3.webp 817w" sizes="(min-width: 1240px) 300px, 50vw" width="817" height="1280" alt="Готовая стрижка с плавным переходом на висках"></figure>
       <figure class="g g-tall"><img src="img/deti-1.webp" srcset="img/deti-1-480.webp 480w, img/deti-1.webp 960w" sizes="(min-width: 1240px) 300px, 50vw" width="960" height="1280" loading="lazy" alt="Улыбающийся мальчик после детской стрижки"></figure>
       <figure class="g g-big"><img src="img/boroda.webp" srcset="img/boroda-480.webp 480w, img/boroda.webp 1280w" sizes="(max-width: 820px) 100vw, (min-width: 1240px) 600px, 50vw" width="1280" height="853" loading="lazy" alt="Мастер оформляет бороду машинкой"></figure>
-      <figure class="g g-tall"><img src="img/sertifikat.webp" srcset="img/sertifikat-480.webp 480w, img/sertifikat.webp 960w" sizes="(min-width: 1240px) 300px, 50vw" width="960" height="1280" loading="lazy" alt="Подарочный сертификат Don Corleone на 5000 рублей"></figure>
+      <figure class="g g-tall"><img src="img/zal-rabota.webp" srcset="img/zal-rabota-480.webp 480w, img/zal-rabota.webp 960w" sizes="(min-width: 1240px) 300px, 50vw" width="960" height="1280" loading="lazy" alt="Два барбера одновременно стригут гостей в соседних креслах"></figure>
     </section>
 
     <section class="sec wrap" id="uslugi">
@@ -112,27 +127,27 @@
 
         <h3>Стрижки</h3>
         <ul class="rows">
-          <li data-svc="classic"><span class="n">Классическая стрижка</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;700</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
-          <li data-svc="long"><span class="n">Удлинённая стрижка</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;000</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
-          <li data-svc="clipper"><span class="n">Стрижка под одну насадку</span><span class="dots"></span><span class="p"><b class="d-only">800</b><b class="f-only">700</b>&nbsp;₽</span></li>
-          <li data-svc="kids"><span class="n">Детская стрижка, до&nbsp;10&nbsp;лет</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;300</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
-          <li data-svc="kids-long"><span class="n">Удлинённая детская, до&nbsp;10&nbsp;лет</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;500</b><b class="f-only">1&nbsp;300</b>&nbsp;₽</span></li>
-          <li data-svc="head-shave"><span class="n">Королевское бритьё головы</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;800</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
-          <li data-svc="shaver"><span class="n">Бритьё шейвером</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;000</b><b class="f-only">900</b>&nbsp;₽</span></li>
+          <li data-svc="classic" data-t="30 мин"><span class="n">Классическая стрижка</span><span class="t">30&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;700</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
+          <li data-svc="long" data-t-d="50–60 мин" data-t-f="1 ч"><span class="n">Удлинённая стрижка</span><span class="t"><span class="d-only">50–60&nbsp;мин</span><span class="f-only">1&nbsp;ч</span></span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;000</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="clipper" data-t="30 мин"><span class="n">Стрижка под одну насадку</span><span class="t">30&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">800</b><b class="f-only">700</b>&nbsp;₽</span></li>
+          <li data-svc="kids" data-t="30 мин"><span class="n">Детская стрижка, до&nbsp;10&nbsp;лет</span><span class="t">30&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;300</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="kids-long" data-t="1 ч"><span class="n">Удлинённая детская, до&nbsp;10&nbsp;лет</span><span class="t">1&nbsp;ч</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;500</b><b class="f-only">1&nbsp;300</b>&nbsp;₽</span></li>
+          <li data-svc="head-shave" data-t-d="45–60 мин" data-t-f="1 ч"><span class="n">Королевское бритьё головы</span><span class="t"><span class="d-only">45–60&nbsp;мин</span><span class="f-only">1&nbsp;ч</span></span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;800</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
+          <li data-svc="shaver" data-t="20 мин"><span class="n">Бритьё шейвером</span><span class="t">20&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;000</b><b class="f-only">900</b>&nbsp;₽</span></li>
         </ul>
 
         <h3>Борода</h3>
         <ul class="rows">
-          <li data-svc="beard"><span class="n">Оформление бороды и&nbsp;усов</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;300</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
-          <li data-svc="face-shave"><span class="n">Королевское бритьё лица</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;800</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
+          <li data-svc="beard" data-t="30 мин"><span class="n">Оформление бороды и&nbsp;усов</span><span class="t">30&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;300</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="face-shave" data-t-d="45–60 мин" data-t-f="45 мин"><span class="n">Королевское бритьё лица</span><span class="t"><span class="d-only">45–60&nbsp;мин</span><span class="f-only">45&nbsp;мин</span></span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;800</b><b class="f-only">1&nbsp;500</b>&nbsp;₽</span></li>
         </ul>
 
         <h3>Комплексы</h3>
         <ul class="rows">
-          <li data-svc="father-son"><span class="n">Отец + сын, до&nbsp;10&nbsp;лет</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
-          <li data-svc="cut-beard"><span class="n">Стрижка и&nbsp;оформление бороды</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
-          <li data-svc="cut-shave"><span class="n">Стрижка и&nbsp;королевское бритьё лица</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;900</b><b class="f-only">2&nbsp;600</b>&nbsp;₽</span></li>
-          <li data-svc="face-care"><span class="n">Комплексный уход за&nbsp;лицом</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;200</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="father-son" data-t="1 ч"><span class="n">Отец + сын, до&nbsp;10&nbsp;лет</span><span class="t">1&nbsp;ч</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="cut-beard" data-t="1 ч"><span class="n">Стрижка и&nbsp;оформление бороды</span><span class="t">1&nbsp;ч</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
+          <li data-svc="cut-shave" data-t="1 ч 20 мин"><span class="n">Стрижка и&nbsp;королевское бритьё лица</span><span class="t">1&nbsp;ч&nbsp;20&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;900</b><b class="f-only">2&nbsp;600</b>&nbsp;₽</span></li>
+          <li data-svc="face-care" data-t="1 ч"><span class="n">Комплексный уход за&nbsp;лицом</span><span class="t">1&nbsp;ч</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;200</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
         </ul>
 
         <h3>Камуфляж седины</h3>
@@ -144,15 +159,15 @@
 
         <h3>Воск</h3>
         <ul class="rows">
-          <li data-svc="wax-beard"><span class="n">Воск: борода по&nbsp;контуру</span><span class="dots"></span><span class="p"><b>500</b>&nbsp;₽</span></li>
-          <li data-svc="wax-zone"><span class="n">Воск: брови, уши или нос</span><span class="dots"></span><span class="p"><b>300</b>&nbsp;₽</span></li>
-          <li data-svc="wax-3"><span class="n">Воск: три зоны сразу</span><span class="dots"></span><span class="p"><b>700</b>&nbsp;₽</span></li>
+          <li data-svc="wax-beard" data-t-d="15–30 мин" data-t-f="30 мин"><span class="n">Воск: борода по&nbsp;контуру</span><span class="t"><span class="d-only">15–30&nbsp;мин</span><span class="f-only">30&nbsp;мин</span></span><span class="dots"></span><span class="p"><b>500</b>&nbsp;₽</span></li>
+          <li data-svc="wax-zone" data-t="15 мин"><span class="n">Воск: брови, уши или нос</span><span class="t">15&nbsp;мин</span><span class="dots"></span><span class="p"><b>300</b>&nbsp;₽</span></li>
+          <li data-svc="wax-3" data-t="15 мин"><span class="n">Воск: три зоны сразу</span><span class="t">15&nbsp;мин</span><span class="dots"></span><span class="p"><b>700</b>&nbsp;₽</span></li>
         </ul>
 
         <h3>Уход</h3>
         <ul class="rows">
           <li data-svc="mask"><span class="n">Чёрная маска</span><span class="dots"></span><span class="p"><b class="d-only">700</b><b class="f-only">600</b>&nbsp;₽</span></li>
-          <li data-svc="scrub"><span class="n">Скраб</span><span class="dots"></span><span class="p"><b class="d-only">300</b><b class="f-only">200</b>&nbsp;₽</span></li>
+          <li data-svc="scrub" data-t="20 мин"><span class="n">Скраб</span><span class="t">20&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">300</b><b class="f-only">200</b>&nbsp;₽</span></li>
         </ul>
 
       </div>
@@ -168,6 +183,31 @@
           <p class="family-price"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽ за&nbsp;двоих</p>
           <a class="btn btn-light" href="#zapis" data-pick="father-son">Записаться вдвоём</a>
         </div>
+      </div>
+    </section>
+
+    <section class="sec wrap" id="deti">
+      <div class="sec-head">
+        <h2>Детские стрижки</h2>
+        <p class="sec-note">Для детей до&nbsp;10&nbsp;лет. Мастера умеют найти подход даже к&nbsp;самым маленьким.</p>
+      </div>
+
+      <div class="sec-body kids">
+        <div class="kids-pics">
+          <img src="img/deti-2.webp" srcset="img/deti-2-480.webp 480w, img/deti-2.webp 960w" sizes="(max-width: 820px) 33vw, 250px" width="960" height="1280" loading="lazy" alt="Мальчик с короткой стрижкой с переходом в кресле барбершопа">
+          <img src="img/deti-1.webp" srcset="img/deti-1-480.webp 480w, img/deti-1.webp 960w" sizes="(max-width: 820px) 33vw, 250px" width="960" height="1280" loading="lazy" alt="Улыбающийся светловолосый мальчик после стрижки">
+          <img src="img/deti-3.webp" srcset="img/deti-3-480.webp 480w, img/deti-3.webp 960w" sizes="(max-width: 820px) 33vw, 250px" width="960" height="1280" loading="lazy" alt="Мальчик смеётся после стрижки">
+        </div>
+        <ul class="rows kids-rows">
+          <li><span class="n">Детская стрижка</span><span class="t">30&nbsp;мин</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;300</b><b class="f-only">1&nbsp;000</b>&nbsp;₽</span></li>
+          <li><span class="n">Удлинённая детская</span><span class="t">1&nbsp;ч</span><span class="dots"></span><span class="p"><b class="d-only">1&nbsp;500</b><b class="f-only">1&nbsp;300</b>&nbsp;₽</span></li>
+          <li><span class="n">Отец + сын</span><span class="t">1&nbsp;ч</span><span class="dots"></span><span class="p"><b class="d-only">2&nbsp;500</b><b class="f-only">2&nbsp;000</b>&nbsp;₽</span></li>
+        </ul>
+        <figure class="quote kids-quote">
+          <blockquote>Отличный барбершоп! Были сегодня с&nbsp;сыном в&nbsp;первый раз и&nbsp;остались в&nbsp;полном восторге.</blockquote>
+          <figcaption>Наталья, Яндекс Карты, 30&nbsp;августа 2026</figcaption>
+        </figure>
+        <a class="btn btn-big" href="#zapis" data-pick="kids">Записать ребёнка</a>
       </div>
     </section>
 
@@ -250,29 +290,84 @@
       <div class="sec-body quotes">
         <figure class="quote quote-big">
           <blockquote>Ребенок ходит стричься к&nbsp;данному мастеру с&nbsp;1&nbsp;года, в&nbsp;этом году нам уже будет 6&nbsp;лет.</blockquote>
-          <figcaption>Юлия Павлова, о&nbsp;мастере Фариде</figcaption>
+          <figcaption>Юлия Павлова, о&nbsp;мастере Фариде. Яндекс Карты, 29&nbsp;мая 2026</figcaption>
         </figure>
         <figure class="quote">
           <blockquote>Настоящий мужской разговор, четкая стрижка и&nbsp;идеально выбритая линия.</blockquote>
-          <figcaption>Валерия Ковтун, зал на&nbsp;Федюнинского</figcaption>
+          <figcaption>Валерия Ковтун, зал на&nbsp;Федюнинского. Яндекс Карты, 26&nbsp;апреля 2026</figcaption>
         </figure>
         <figure class="quote">
           <blockquote>Барбершоп, где ценят время клиента. Записался через приложение, пришёл — меня уже ждали.</blockquote>
-          <figcaption>Гость зала на&nbsp;Дворцовом</figcaption>
+          <figcaption>Гость зала на&nbsp;Дворцовом. Яндекс Карты, 21&nbsp;января 2026</figcaption>
         </figure>
+        <p class="all-reviews">
+          Все отзывы на&nbsp;Яндекс Картах:
+          <a href="https://yandex.ru/maps/org/don_corleone/103205529268/reviews/" target="_blank" rel="noopener">зал на&nbsp;Дворцовом</a>
+          и&nbsp;<a href="https://yandex.ru/maps/org/don_corleone/197876531869/reviews/" target="_blank" rel="noopener">зал на&nbsp;Федюнинского</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="sec wrap" id="podarok">
+      <div class="sec-head">
+        <h2>Подарочный сертификат</h2>
+        <p class="sec-note">Подарок, который точно пригодится.</p>
+      </div>
+
+      <div class="sec-body gift">
+        <img class="gift-photo" src="img/sertifikat.webp" srcset="img/sertifikat-480.webp 480w, img/sertifikat.webp 960w" sizes="(max-width: 820px) 100vw, 320px" width="960" height="1280" loading="lazy" alt="Подарочный сертификат Don Corleone на 5000 рублей в чёрном оформлении с эмблемой">
+        <div class="gift-text">
+          <p>Сертификат на&nbsp;стрижку, бороду или комплекс. Получатель сам выберет мастера и&nbsp;удобное время.</p>
+          <p class="gift-how">Номиналы от&nbsp;1&nbsp;000 до&nbsp;5&nbsp;000&nbsp;₽. Купить можно онлайн, сертификат действует в&nbsp;обоих залах.</p>
+          <a class="btn btn-big" href="https://o9241.yclients.ru/certificates" target="_blank" rel="noopener">Купить сертификат</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec wrap" id="faq" aria-labelledby="faq-h">
+      <div class="sec-head">
+        <h2 id="faq-h">Полезно знать</h2>
+      </div>
+
+      <div class="sec-body faq">
+        <details>
+          <summary>Сколько длится стрижка?</summary>
+          <p>Классическая и&nbsp;детская стрижка, оформление бороды занимают около 30&nbsp;минут, стрижка с&nbsp;бородой около часа. Время каждой услуги указано в&nbsp;<a href="#uslugi">прайсе</a>.</p>
+        </details>
+        <details>
+          <summary>Как можно оплатить?</summary>
+          <p>Картой, наличными или переводом.</p>
+        </details>
+        <details>
+          <summary>Стрижёте детей?</summary>
+          <p>Да. Есть детская и&nbsp;удлинённая детская стрижка для детей до&nbsp;10&nbsp;лет и&nbsp;комплекс «Отец + сын». К&nbsp;нам приходят и&nbsp;совсем маленькие: одна гостья водит сына к&nbsp;Фариду с&nbsp;года.</p>
+        </details>
+        <details>
+          <summary>Почему цены в&nbsp;залах разные?</summary>
+          <p>На&nbsp;Дворцовом проспекте работают Pro-барберы, поэтому услуги там дороже. Цены каждого зала видно в&nbsp;прайсе: переключите зал в&nbsp;шапке сайта.</p>
+        </details>
+        <details>
+          <summary>Есть парковка и&nbsp;Wi-Fi?</summary>
+          <p>У&nbsp;зала на&nbsp;Дворцовом проспекте есть парковка и&nbsp;Wi-Fi. В&nbsp;зал на&nbsp;Федюнинского нельзя с&nbsp;животными, и&nbsp;в&nbsp;него не&nbsp;получится заехать с&nbsp;коляской.</p>
+        </details>
+        <details>
+          <summary>Можно подарить стрижку?</summary>
+          <p>Да, есть <a href="#podarok">подарочные сертификаты</a>.</p>
+        </details>
       </div>
     </section>
 
     <section class="sec wrap" id="adresa">
       <div class="sec-head">
         <h2>Адреса</h2>
-        <p class="sec-note">Оба зала работают каждый день с&nbsp;10:00 до&nbsp;22:00. Принимаем карты, наличные и&nbsp;переводы. Есть парковка, Wi-Fi и&nbsp;подарочные сертификаты.</p>
+        <p class="sec-note">Оба зала работают каждый день с&nbsp;10:00 до&nbsp;22:00.</p>
       </div>
 
       <div class="sec-body places">
         <article class="place" data-b="d">
           <h3>Дворцовый проспект, 14/9</h3>
           <p class="place-where">Ломоносов, второй этаж, помещение&nbsp;16</p>
+          <p class="open-now" data-open></p>
           <a class="place-tel" href="tel:+79522616699">+7 952 261-66-99</a>
           <ul class="place-links">
             <li><a href="https://yandex.ru/maps/org/don_corleone/103205529268/" target="_blank" rel="noopener">Открыть на&nbsp;Яндекс Картах</a></li>
@@ -283,6 +378,7 @@
         <article class="place" data-b="f">
           <h3>Улица Федюнинского, 14к1</h3>
           <p class="place-where">Ломоносов</p>
+          <p class="open-now" data-open></p>
           <a class="place-tel" href="tel:+79500220630">+7 950 022-06-30</a>
           <ul class="place-links">
             <li><a href="https://yandex.ru/maps/org/don_corleone/197876531869/" target="_blank" rel="noopener">Открыть на&nbsp;Яндекс Картах</a></li>

@@ -217,6 +217,39 @@ body[data-branch="f"] .d-only { display: none; }
 .orn::before, .orn::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
 
 .hero-facts { max-width: 30em; font-size: 19px; }
+.hero-facts b { font-weight: 600; white-space: nowrap; }
+
+/* Рейтинг и награда Яндекса: доверие с первого экрана */
+.proof { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
+.rating {
+  display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px;
+  text-decoration: none;
+}
+.rating-num { font-family: var(--display); font-weight: 800; font-size: 28px; line-height: 1; }
+.rating-stars { color: var(--accent); letter-spacing: 2px; font-size: 15px; }
+.rating-src { font-size: 15px; color: var(--muted); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line); }
+.rating:hover .rating-src { color: var(--accent); }
+.award {
+  font-size: 14px; font-weight: 500;
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 6px 14px;
+}
+
+/* «Открыто до 22:00»: точка медная, когда открыто, серая, когда закрыто */
+.open-now { font-size: 15px; color: var(--muted); }
+.open-now:empty { display: none; }
+.open-now::before {
+  content: ""; display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--muted); margin-right: 8px; vertical-align: 1px;
+}
+.open-now.is-open { color: var(--ink); }
+.open-now.is-open::before { background: var(--accent); }
+.hero .open-now { margin-top: 16px; }
+.place .open-now { margin-top: 10px; }
+.card .open-now { color: var(--muted-d); }
+.card .open-now.is-open { color: var(--ink-d); }
+.card .open-now.is-open::before { background: var(--accent-d); }
 .hero-act { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 32px; }
 .hero-tel { font-size: 19px; font-weight: 500; text-decoration: none; font-variant-numeric: tabular-nums; }
 .hero-tel:hover { color: var(--accent); }
@@ -271,6 +304,8 @@ body[data-branch="f"] .d-only { display: none; }
   transform: translateY(-4px);
 }
 .p { white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* Длительность услуги, мелко рядом с названием */
+.t { font-size: 14px; color: var(--muted); white-space: nowrap; }
 .p b { font-weight: 600; }
 
 /* Единственное движение: цена мягко появляется при смене зала */
@@ -411,7 +446,67 @@ body[data-branch="f"].switched .d-only { display: none; }
   .pick input[type="checkbox"]:checked { background: var(--accent); }
 }
 
+/* ---------- Детские стрижки ---------- */
+
+.kids { display: grid; gap: 32px; justify-items: start; }
+.kids-pics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; }
+.kids-pics img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+.kids-rows { width: 100%; }
+.kids-quote blockquote { font-size: 19px; max-width: 28em; }
+
+/* ---------- Сертификат ---------- */
+
+.gift { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: 40px; align-items: center; }
+.gift-photo { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+.gift-text { display: grid; gap: 16px; justify-items: start; font-size: 19px; max-width: 28em; }
+.gift-how { font-size: 15px; color: var(--muted); }
+
+/* ---------- Полезно знать ---------- */
+
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq details:first-child { border-top: 1px solid var(--rule); }
+.faq summary {
+  list-style: none;
+  display: flex; align-items: center; gap: 14px;
+  padding-block: 18px;
+  font-family: var(--display); font-weight: 700; font-size: 22px; line-height: 1.2;
+  cursor: pointer;
+}
+.faq summary::-webkit-details-marker { display: none; }
+/* Свой значок прямо перед вопросом: шеврон, повёрнутый вправо, пока закрыто */
+.faq summary::before {
+  content: ""; flex: none;
+  width: 9px; height: 9px;
+  border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  rotate: -45deg;
+  margin-inline: 2px 4px;
+}
+.faq details[open] > summary::before { rotate: 45deg; }
+.faq summary:hover { color: var(--accent); }
+.faq details p { padding: 0 0 20px 29px; max-width: 34em; color: var(--ink); }
+.faq details p a { color: var(--accent); text-underline-offset: 4px; }
+
+/* Плавное раскрытие там, где браузер умеет */
+.faq details::details-content {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
+}
+.faq details:not([open])::details-content { block-size: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .faq summary::before { transition: rotate 0.2s; }
+  .faq details::details-content {
+    transition: block-size, content-visibility, display;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-behavior: allow-discrete;
+  }
+}
+
 /* ---------- Отзывы ---------- */
+
+.all-reviews { grid-column: 1 / -1; font-size: 15px; color: var(--muted); }
+.all-reviews a { color: var(--accent); text-underline-offset: 4px; }
 
 .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 40px; }
 .quote-big { grid-column: 1 / -1; }
@@ -484,6 +579,9 @@ body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
   .sec-head { position: static; margin-bottom: 36px; }
   .family-photo { max-width: none; aspect-ratio: 4 / 3; margin-bottom: 32px; }
   .quotes, .places { grid-template-columns: 1fr; }
+  .gift { grid-template-columns: 1fr; gap: 24px; }
+  .gift-photo { aspect-ratio: 4 / 3; }
+  .faq summary { font-size: 19px; }
   .master-meta { margin-left: calc(36px + 52px + 16px); width: 100%; }
   .master-else { padding-left: calc(36px + 52px + 16px); }
   .foot-small { margin-left: 0; }
