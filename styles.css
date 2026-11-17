@@ -1,8 +1,8 @@
-/* Don Corleone, барбершоп в Ломоносове.
-   Своя тема «Don Corleone», цвета сняты с логотипа.
-   Тёмная: чёрное поле, медный круг, кремовые буквы.
-   Светлая: кремовая бумага подарочного сертификата, тёмная медь, эспрессо.
-   Бордо со второй эмблемы с барбер-пулом одинаковое в обеих. */
+/* Дон Корлеоне, барбершоп в Ломоносове и Красном Селе.
+   Своя тема, цвета сняты с нового логотипа (ноябрь 2026):
+   тёплый чёрный фон эмблемы, золото звёзд и канта, кремовые буквы,
+   красная роза и тёмное бордо обводки надписи.
+   Тёмная: чёрное поле, золото, крем. Светлая: кремовая бумага, бордо розы, золотые линии. */
 
 /* ---------- Шрифты: лежат в папке сайта, без обращения к Google ----------
    Для каждого начертания два файла: латиница и кириллица,
@@ -14,6 +14,9 @@
 @font-face { font-family: "Bitter"; font-weight: 700; font-display: swap; src: url("fonts/Bitter-700-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Bitter"; font-weight: 800; font-display: swap; src: url("fonts/Bitter-800-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @font-face { font-family: "Bitter"; font-weight: 800; font-display: swap; src: url("fonts/Bitter-800-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+/* Рукописный шрифт для названия, как надпись на логотипе */
+@font-face { font-family: "Lobster"; font-weight: 400; font-display: swap; src: url("fonts/Lobster-400-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Lobster"; font-weight: 400; font-display: swap; src: url("fonts/Lobster-400-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Golos Text"; font-weight: 400; font-display: swap; src: url("fonts/GolosText-400-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @font-face { font-family: "Golos Text"; font-weight: 400; font-display: swap; src: url("fonts/GolosText-400-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Golos Text"; font-weight: 500; font-display: swap; src: url("fonts/GolosText-500-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
@@ -23,17 +26,17 @@
 
 :root {
   /* Сырые цвета: светлая и тёмная версии */
-  --bg-l: #f6eedb;       --bg-d: #000000;
-  --ink-l: #1d130b;      --ink-d: #f3e2b8;
-  --accent-l: #9e4a1e;   --accent-d: #c8733a;
-  --accent-ink-l: #f6eedb; --accent-ink-d: #000000;
-  --line-l: #c08a5e;     --line-d: #9e4a1e;
-  --muted-l: #6b5c45;    --muted-d: #9a8d74;
-  --rule-l: #e0d0ae;     --rule-d: #33261b;
+  --bg-l: #f5ecd9;       --bg-d: #0c0908;
+  --ink-l: #1c1411;      --ink-d: #efe2c4;
+  --accent-l: #8e1520;   --accent-d: #e3c389;
+  --accent-ink-l: #f5ecd9; --accent-ink-d: #0c0908;
+  --line-l: #b89665;     --line-d: #7d6442;
+  --muted-l: #6a5a4b;    --muted-d: #9f907a;
+  --rule-l: #e3d4b6;     --rule-d: #2a211c;
 
-  /* Одинаковые в обеих темах */
-  --wine: #601615;
-  --wine-ink: #f3e2b8;
+  /* Одинаковые в обеих темах: бордо обводки надписи */
+  --wine: #4f0b12;
+  --wine-ink: #efe2c4;
 
   /* Рабочие токены: по умолчанию светлые */
   --bg: var(--bg-l);
@@ -46,6 +49,7 @@
 
   --display: "Bitter", Georgia, serif;
   --text: "Golos Text", "Segoe UI", Arial, sans-serif;
+  --script: "Lobster", "Brush Script MT", cursive;
 
   --pad: clamp(16px, 5vw, 64px);
 
@@ -118,8 +122,11 @@ fieldset { border: 0; min-width: 0; }
 .skip:focus { left: 0; }
 
 /* Переключение зала: показываем только выбранный */
-body[data-branch="d"] .f-only,
-body[data-branch="f"] .d-only { display: none; }
+body:not([data-branch="d"]) .d-only,
+body:not([data-branch="f"]) .f-only,
+body:not([data-branch="k"]) .k-only { display: none; }
+/* Фото залов в Ломоносове: в Красном Селе вместо них свои */
+body[data-branch="k"] .no-k { display: none; }
 
 /* ---------- Кнопки ---------- */
 
@@ -142,10 +149,10 @@ body[data-branch="f"] .d-only { display: none; }
   background: var(--bg);
   border-bottom: 1px solid var(--rule);
 }
-.top-in { display: flex; align-items: center; gap: 28px; min-height: 72px; }
+.top-in { display: flex; align-items: center; gap: 16px; min-height: 72px; }
 .mark {
-  font-family: var(--display); font-weight: 800;
-  font-size: 22px; line-height: 1; letter-spacing: 0.01em;
+  font-family: var(--script); font-weight: 400;
+  font-size: 27px; line-height: 1; color: var(--accent);
   text-decoration: none; white-space: nowrap;
 }
 
@@ -160,11 +167,12 @@ body[data-branch="f"] .d-only { display: none; }
   font: inherit; font-size: 14px; font-weight: 500;
   color: var(--ink); background: transparent;
   border: 0; border-radius: 999px;
-  padding: 7px 16px; cursor: pointer; white-space: nowrap;
+  padding: 7px 14px; cursor: pointer; white-space: nowrap;
 }
+@media (pointer: coarse) { .switch button { min-height: 44px; } }
 .switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
 
-.nav { display: flex; gap: 24px; font-size: 15px; }
+.nav { display: flex; gap: 20px; font-size: 15px; }
 .nav a { text-decoration: none; }
 .nav a:hover { color: var(--accent); }
 
@@ -198,7 +206,7 @@ body[data-branch="f"] .d-only { display: none; }
 }
 /* У эмблемы чёрный фон: на тёмной теме он сливается со страницей,
    на светлой эмблема становится круглым значком */
-.hero-emblem { width: 100%; max-width: 560px; border-radius: 50%; }
+.hero-emblem { width: 100%; max-width: 540px; border-radius: 50%; box-shadow: 0 0 0 1px var(--line), 0 24px 60px -24px rgb(0 0 0 / 0.55); }
 .hero h1 {
   font-family: var(--display); font-weight: 800;
   font-size: clamp(38px, 5.2vw, 76px);
@@ -210,7 +218,7 @@ body[data-branch="f"] .d-only { display: none; }
 /* Орнамент из логотипа: линия, звезда, линия */
 .orn {
   display: flex; align-items: center; gap: 12px;
-  width: min(260px, 70%);
+  width: min(300px, 80%);
   margin-block: 28px;
   color: var(--accent); font-size: 15px; line-height: 1;
 }
@@ -311,8 +319,9 @@ body[data-branch="f"] .d-only { display: none; }
 /* Единственное движение: цена мягко появляется при смене зала */
 @keyframes swap { from { opacity: 0; transform: translateY(5px); } }
 .switched .p b, .switched .family-price b { display: inline-block; animation: swap 0.35s ease-out; }
-body[data-branch="d"].switched .f-only,
-body[data-branch="f"].switched .d-only { display: none; }
+body:not([data-branch="d"]).switched .d-only,
+body:not([data-branch="f"]).switched .f-only,
+body:not([data-branch="k"]).switched .k-only { display: none; }
 
 /* ---------- Отец + сын ---------- */
 
@@ -520,10 +529,11 @@ body[data-branch="f"].switched .d-only { display: none; }
 
 /* ---------- Адреса ---------- */
 
-.places { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 40px; }
+.places { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 48px 32px; }
 .place h3 { font-family: var(--display); font-weight: 700; font-size: 26px; line-height: 1.15; }
 body[data-branch="d"] .place[data-b="d"] h3,
-body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
+body[data-branch="f"] .place[data-b="f"] h3,
+body[data-branch="k"] .place[data-b="k"] h3 { color: var(--accent); }
 .place-where { color: var(--muted); font-size: 15px; margin-top: 8px; }
 .place-tel {
   display: inline-block; margin-top: 20px;
@@ -544,7 +554,7 @@ body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
   font-size: 15px;
 }
 .foot-emblem { width: 56px; height: 56px; border-radius: 50%; }
-.foot-mark { font-family: var(--display); font-weight: 800; font-size: 20px; }
+.foot-mark { font-family: var(--script); font-weight: 400; font-size: 26px; }
 .foot-small { color: var(--muted); margin-left: auto; }
 
 /* ---------- Нижняя панель на телефоне ---------- */
@@ -553,7 +563,7 @@ body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
 
 /* ---------- Планшет и телефон ---------- */
 
-@media (max-width: 1020px) {
+@media (max-width: 1240px) {
   .nav { display: none; }
 }
 
@@ -565,7 +575,7 @@ body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
   .top .btn { display: none; }
   .mark { margin-right: auto; }
   .switch { order: 3; width: 100%; margin: 0; }
-  .switch button { flex: 1; padding-inline: 8px; font-size: 13px; }
+  .switch button { flex: 1; padding-inline: 6px; font-size: 13px; }
   .theme-btn { font-size: 13px; padding: 6px 12px; }
 
   .hero { grid-template-columns: 1fr; }
@@ -657,7 +667,7 @@ body:has(.choose[open]) { overflow: hidden; }
   padding: clamp(32px, 6vw, 80px) var(--pad);
   outline: none; /* фокус при открытии ставим сюда, чтобы не рисовать рамку на карточке */
 }
-.choose-mark { font-family: var(--display); font-weight: 800; font-size: 22px; }
+.choose-mark { font-family: var(--script); font-weight: 400; font-size: 32px; color: var(--accent-d); }
 .choose h2 {
   font-family: var(--display); font-weight: 800;
   font-size: clamp(40px, 6.5vw, 88px);
@@ -667,7 +677,7 @@ body:has(.choose[open]) { overflow: hidden; }
 
 .choose-cards {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 420px));
+  grid-template-columns: repeat(3, minmax(0, 380px));
   gap: 24px;
   margin-top: 8px;
 }

@@ -1,5 +1,5 @@
 // Don Corleone: переключатель зала и запись в три шага.
-// "d" — Дворцовый проспект, "f" — улица Федюнинского.
+// "d" — Дворцовый проспект, "f" — улица Федюнинского, "k" — Красное Село.
 
 (function () {
   'use strict';
@@ -20,6 +20,11 @@
       title: 'улица Федюнинского, 14к1',
       form: 'https://n1378817.yclients.ru',
       company: 1252002
+    },
+    k: {
+      title: 'Красное Село, Стрельнинское шоссе, 3Б',
+      form: 'https://n1897152.yclients.ru',
+      company: 1676748
     }
   };
 
@@ -28,10 +33,12 @@
     farid: 3699373,
     feruz: 5718147,
     khurshid: 3762578,
-    bos: 4201560
+    bos: 4201560,
+    serzh: 4898686, // Красное Село, сверено 17.11.2026
+    bek: 6105501
   };
 
-  // ID услуг в YClients, одинаковые в обоих залах.
+  // ID услуг в YClients, одинаковые во всех залах.
   // Ключи совпадают с data-svc в прайсе на странице.
   var SERVICES = {
     'classic': 18790750,
@@ -117,15 +124,22 @@
         return;
       }
       el.querySelectorAll('li').forEach(function (li) {
-        var d = li.querySelector('.p b.d-only, .p b:not(.f-only)');
-        var f = li.querySelector('.p b.f-only, .p b:not(.d-only)');
+        // Цена зала: <b class="k-only">, а общая для всех залов — просто <b>.
+        // Нет цены для зала — услуги там нет.
+        var price = {};
+        var time = {};
         var same = li.getAttribute('data-t') || '';
+        Object.keys(BRANCHES).forEach(function (k) {
+          var b = li.querySelector('.p b.' + k + '-only') || li.querySelector('.p b:not([class])');
+          if (b) price[k] = b.textContent.trim();
+          time[k] = li.getAttribute('data-t-' + k) || same;
+        });
         list.push({
           id: li.getAttribute('data-svc'),
           group: group,
           name: li.querySelector('.n').textContent.replace(/\s+/g, ' ').trim(),
-          price: { d: d.textContent.trim(), f: f.textContent.trim() },
-          time: { d: li.getAttribute('data-t-d') || same, f: li.getAttribute('data-t-f') || same }
+          price: price,
+          time: time
         });
       });
     });
@@ -151,13 +165,22 @@
     return Array.prototype.slice.call(form.querySelectorAll('input[name="svc"]:checked'));
   }
 
-  function renderServices(branch) {
+  // Ключ цены для мастера. В Красном Селе цена зависит от мастера:
+  // у Pro-барбера как на Дворцовом (data-price="d"), у барбера как на Федюнинского.
+  function priceKey(master) {
+    return master.getAttribute('data-price') || master.getAttribute('data-branch');
+  }
+
+  function renderServices(master) {
+    var branch = master.getAttribute('data-branch');
+    var pk = priceKey(master);
     var keepIds = checkedServices().map(function (input) { return input.value; });
     if (pendingService) keepIds.push(pendingService);
     svcList.textContent = '';
 
     var lastGroup = '';
     services.forEach(function (s) {
+      if (!s.price[branch]) return;
       if (s.group !== lastGroup) {
         var g = document.createElement('p');
         g.className = 'svc-group';
@@ -188,7 +211,7 @@
 
       var p = document.createElement('span');
       p.className = 'p';
-      p.textContent = s.price[branch] + ' ₽';
+      p.textContent = s.price[pk] + ' ₽';
 
       label.append(input, n);
       if (t.textContent) label.append(t);
@@ -224,7 +247,8 @@
       var names = picked.map(function (svc) {
         return svc.name.charAt(0).toLowerCase() + svc.name.slice(1);
       });
-      var total = picked.reduce(function (sum, svc) { return sum + toNumber(svc.price[branch]); }, 0);
+      var pk = priceKey(m);
+      var total = picked.reduce(function (sum, svc) { return sum + toNumber(svc.price[pk]); }, 0);
 
       summary.textContent =
         m.parentNode.querySelector('.master-name').textContent + ': ' + names.join(', ') + '. ' +
@@ -268,7 +292,7 @@
     if (input.name === 'master') {
       var branch = input.getAttribute('data-branch');
       setBranch(branch, body.getAttribute('data-branch') !== branch);
-      renderServices(branch);
+      renderServices(input);
     }
     update();
   });
@@ -349,7 +373,7 @@
   // иначе включаем зал по умолчанию
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
-  setBranch(saved === 'f' ? 'f' : 'd', false);
+  setBranch(BRANCHES[saved] ? saved : 'd', false);
 
   // ---------- «Открыто сейчас» ----------
   // Оба зала работают каждый день с 10:00 до 22:00 по московскому времени.
