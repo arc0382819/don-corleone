@@ -293,6 +293,11 @@ body[data-branch="k"] .no-k { display: none; }
 }
 .sec-note { margin-top: 16px; color: var(--muted); font-size: 15px; max-width: 22em; }
 
+/* Короткие разделы (отзывы, адреса) идут на всю ширину,
+   чтобы страница не была одной колонкой-шаблоном сверху донизу */
+.sec-wide { grid-template-columns: minmax(0, 1fr); }
+.sec-wide .sec-head { position: static; margin-bottom: clamp(32px, 4vw, 56px); }
+
 /* ---------- Цены ---------- */
 
 .price h3 {
@@ -386,7 +391,7 @@ body:not([data-branch="k"]).switched .k-only { display: none; }
 .master:has(input:disabled) .master-ava { filter: grayscale(1); opacity: 0.45; }
 .master-name {
   font-family: var(--display); font-weight: 700;
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(32px, 3.6vw, 48px);
   line-height: 1.05; letter-spacing: -0.015em;
 }
 .master-meta { font-size: 15px; color: var(--muted); margin-left: auto; }
@@ -401,6 +406,11 @@ body:not([data-branch="k"]).switched .k-only { display: none; }
 .master:has(input:disabled) .master-meta { display: none; }
 .master:has(input:disabled) .master-else { display: block; }
 .master:has(input:disabled) input { cursor: default; opacity: 0.4; }
+/* ...и строка у него компактная, чтобы мастера своего зала были главными */
+.master:has(input:disabled) { padding-block: 8px; }
+.master:has(input:disabled) .master-ava { width: 40px; height: 40px; }
+.master:has(input:disabled) .master-name { font-size: 24px; }
+.master:has(input:disabled) .master-else { padding-left: calc(36px + 40px + 16px); }
 
 .link-btn {
   font: inherit; color: var(--accent); background: none; border: 0; padding: 0;
@@ -529,7 +539,8 @@ body:not([data-branch="k"]).switched .k-only { display: none; }
 
 /* ---------- Адреса ---------- */
 
-.places { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 48px 32px; }
+.places { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 48px 32px; }
+.place-photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; background: var(--rule); margin-bottom: 20px; }
 .place h3 { font-family: var(--display); font-weight: 700; font-size: 26px; line-height: 1.15; }
 body[data-branch="d"] .place[data-b="d"] h3,
 body[data-branch="f"] .place[data-b="f"] h3,
@@ -622,10 +633,21 @@ body[data-branch="k"] .place[data-b="k"] h3 { color: var(--accent); }
   .bar .bar-book { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 }
 
-@media (max-width: 400px) {
-  .rows li, .svc { flex-wrap: wrap; }
+/* Узкий экран: цена всегда справа от названия, время мелко под ним.
+   Раньше длинное название выталкивало цену на отдельную строку */
+@media (max-width: 560px) {
+  .rows li, .svc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "n p" "t p";
+    column-gap: 16px; row-gap: 2px;
+  }
+  .svc { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "i n p" ". t p"; }
+  .svc input { grid-area: i; }
+  .rows .n, .svc .n { grid-area: n; }
+  .rows .t, .svc .t { grid-area: t; }
+  .rows .p, .svc .p { grid-area: p; }
   .dots { display: none; }
-  .rows .n, .svc .n { flex: 1 1 60%; }
 }
 
 /* ---------- Стартовый экран: выбор зала ----------
@@ -686,12 +708,13 @@ body:has(.choose[open]) { overflow: hidden; }
   text-align: left; cursor: pointer;
   display: grid; gap: 8px;
   min-width: 0; /* иначе кнопка растягивается под исходный размер фото */
+  container-type: inline-size;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 .card-pic { display: block; width: 100%; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 3; }
 .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .card:hover .card-img, .card:focus-visible .card-img { transform: scale(1.04); }
-.card-addr { font-family: var(--display); font-weight: 700; font-size: 24px; line-height: 1.15; margin-top: 10px; }
+.card-addr { font-family: var(--display); font-weight: 700; font-size: clamp(1.125rem, 9cqi, 1.5rem); line-height: 1.15; margin-top: 10px; overflow-wrap: break-word; }
 .card-tel { color: var(--accent-d); font-variant-numeric: tabular-nums; }
 .card-go {
   display: flex; justify-content: space-between;
