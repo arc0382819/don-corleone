@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Don Corleone — барбершоп в Ломоносове и Красном Селе</title>
   <meta name="description" content="Барбершоп Don Corleone: два зала в Ломоносове и зал в Красном Селе, каждый день с 10:00 до 22:00. Цены, мастера и онлайн-запись.">
+  <!-- TODO: это демо для владельца — поисковикам запрещено его индексировать.
+       При официальном запуске удалить эту строку и Disallow в robots.txt -->
+  <meta name="robots" content="noindex, nofollow">
   <meta name="color-scheme" content="light dark">
   <script>
     try { var s = localStorage.getItem('color-scheme'); if (s) document.querySelector('meta[name="color-scheme"]').content = s; } catch (e) {}
@@ -75,7 +78,7 @@
         <span class="to-light">Светлая тема</span>
       </button>
 
-      <a class="btn" id="top-book" href="#zapis">Записаться</a>
+      <a class="btn top-cta" id="top-book" href="#zapis">Записаться</a>
     </div>
   </header>
 
@@ -92,6 +95,14 @@
           Барбершоп в&nbsp;Ломоносове и&nbsp;Красном Селе. Три зала, каждый день с&nbsp;10:00 до&nbsp;22:00.
           Классическая стрижка <b class="d-only">1&nbsp;700&nbsp;₽</b><b class="f-only">1&nbsp;500&nbsp;₽</b><b class="k-only">1&nbsp;500–1&nbsp;700&nbsp;₽</b>, оформление бороды <b class="d-only">1&nbsp;300&nbsp;₽</b><b class="f-only">1&nbsp;000&nbsp;₽</b><b class="k-only">1&nbsp;000–1&nbsp;300&nbsp;₽</b>.
         </p>
+        <!-- Главное действие первого экрана: сразу под ценами, до рейтинга -->
+        <div class="hero-act">
+          <a class="btn hero-cta" href="#zapis">Записаться онлайн</a>
+          <a class="hero-tel d-only" href="tel:+79522616699"><span class="hero-tel-or">или позвоните</span> +7 952 261-66-99</a>
+          <a class="hero-tel f-only" href="tel:+79500220630"><span class="hero-tel-or">или позвоните</span> +7 950 022-06-30</a>
+          <a class="hero-tel k-only" href="tel:+79500098582"><span class="hero-tel-or">или позвоните</span> +7 950 009-85-82</a>
+        </div>
+        <p class="open-now" data-open></p>
         <div class="proof">
           <a class="rating d-only" href="https://yandex.ru/maps/org/don_corleone/103205529268/reviews/" target="_blank" rel="noopener">
             <span class="rating-num">5,0</span><span class="rating-stars" aria-hidden="true">★★★★★</span>
@@ -108,13 +119,6 @@
           <span class="award d-only">Хорошее место 2026 по&nbsp;версии Яндекса</span>
           <span class="award k-only">Хорошее место 2026 по&nbsp;версии Яндекса</span>
         </div>
-        <div class="hero-act">
-          <a class="btn btn-big" href="#zapis">Выбрать мастера</a>
-          <a class="hero-tel d-only" href="tel:+79522616699">+7 952 261-66-99</a>
-          <a class="hero-tel f-only" href="tel:+79500220630">+7 950 022-06-30</a>
-          <a class="hero-tel k-only" href="tel:+79500098582">+7 950 009-85-82</a>
-        </div>
-        <p class="open-now" data-open></p>
       </div>
     </section>
 
@@ -395,7 +399,7 @@
         </details>
         <details>
           <summary>Есть парковка и&nbsp;Wi-Fi?</summary>
-          <p>У&nbsp;зала на&nbsp;Дворцовом проспекте есть парковка и&nbsp;Wi-Fi. В&nbsp;зал на&nbsp;Федюнинского нельзя с&nbsp;животными, и&nbsp;в&nbsp;него не&nbsp;получится заехать с&nbsp;коляской.</p>
+          <p>У&nbsp;залов на&nbsp;Дворцовом проспекте и&nbsp;на&nbsp;Федюнинского есть парковка и&nbsp;Wi-Fi. В&nbsp;зал на&nbsp;Федюнинского нельзя с&nbsp;животными, и&nbsp;в&nbsp;него не&nbsp;получится заехать с&nbsp;коляской. Ближайшие остановки каждого зала есть на&nbsp;<a href="#karta">карте</a>.</p>
         </details>
         <details>
           <summary>Можно подарить стрижку?</summary>
@@ -420,6 +424,7 @@
           <ul class="place-links">
             <li><a href="https://yandex.ru/maps/org/don_corleone/103205529268/" target="_blank" rel="noopener">Открыть на&nbsp;Яндекс Картах</a></li>
             <li><a href="https://wa.me/79522616699" target="_blank" rel="noopener">Написать в&nbsp;WhatsApp</a></li>
+            <li><a class="link-btn" href="#karta" data-set="d">Как добраться</a></li>
           </ul>
         </article>
 
@@ -432,6 +437,7 @@
           <ul class="place-links">
             <li><a href="https://yandex.ru/maps/org/don_corleone/197876531869/" target="_blank" rel="noopener">Открыть на&nbsp;Яндекс Картах</a></li>
             <li><a href="https://wa.me/79500220630" target="_blank" rel="noopener">Написать в&nbsp;WhatsApp</a></li>
+            <li><a class="link-btn" href="#karta" data-set="f">Как добраться</a></li>
           </ul>
         </article>
 
@@ -443,8 +449,53 @@
           <a class="place-tel" href="tel:+79500098582">+7 950 009-85-82</a>
           <ul class="place-links">
             <li><a href="https://yandex.ru/maps/org/don_corleone/87448064235/" target="_blank" rel="noopener">Открыть на&nbsp;Яндекс Картах</a></li>
+            <li><a class="link-btn" href="#karta" data-set="k">Как добраться</a></li>
           </ul>
         </article>
+      </div>
+      <!-- Карта выбранного зала: OpenStreetMap через библиотеку Leaflet (лежит в vendor/leaflet).
+           Leaflet и кусочки карты грузятся, только когда посетитель долистал до карты.
+           Без рекламы, в отличие от бесплатного виджета Яндекса.
+           Остановки и расстояния взяты из карточек залов на Яндекс Картах (ноябрь 2026) -->
+      <div class="route" id="karta">
+        <div class="route-map" id="map" role="region" aria-label="Карта: где находится выбранный зал">
+          <noscript><p class="map-fallback">Для карты нужен JavaScript. Маршрут можно построить кнопкой рядом.</p></noscript>
+        </div>
+
+        <div class="route-info">
+          <h3>Как добраться</h3>
+
+          <div class="d-only">
+            <p class="route-addr">Дворцовый проспект, 14/9. Второй этаж, помещение&nbsp;16.</p>
+            <ul class="rows">
+              <li><span class="n">Остановка «Улица Ломоносова»</span><span class="dots"></span><span class="p">100&nbsp;м</span></li>
+              <li><span class="n">Станция Ораниенбаум-1, электрички с&nbsp;Балтийского вокзала</span><span class="dots"></span><span class="p">400&nbsp;м</span></li>
+            </ul>
+            <p class="route-note">Есть парковка.</p>
+            <a class="btn" href="https://yandex.ru/maps/?rtext=~59.915075%2C29.773077" target="_blank" rel="noopener">Построить маршрут</a>
+          </div>
+
+          <div class="f-only">
+            <p class="route-addr">Улица Федюнинского, 14к1. Вход с&nbsp;улицы.</p>
+            <ul class="rows">
+              <li><span class="n">Остановка «Улица Федюнинского, 16»</span><span class="dots"></span><span class="p">150&nbsp;м</span></li>
+              <li><span class="n">Остановка «Ораниенбаумский проспект»</span><span class="dots"></span><span class="p">320&nbsp;м</span></li>
+            </ul>
+            <p class="route-note">Есть парковка.</p>
+            <a class="btn" href="https://yandex.ru/maps/?rtext=~59.899574%2C29.775110" target="_blank" rel="noopener">Построить маршрут</a>
+          </div>
+
+          <div class="k-only">
+            <p class="route-addr">Красное Село, Стрельнинское шоссе,&nbsp;3Б. Вход с&nbsp;улицы.</p>
+            <ul class="rows">
+              <li><span class="n">Остановка «Бронетанковая улица»</span><span class="dots"></span><span class="p">190&nbsp;м</span></li>
+              <li><span class="n">Остановка «Боровая улица»</span><span class="dots"></span><span class="p">310&nbsp;м</span></li>
+            </ul>
+            <a class="btn" href="https://yandex.ru/maps/?rtext=~59.742844%2C30.093744" target="_blank" rel="noopener">Построить маршрут</a>
+          </div>
+
+          <p class="route-src">Остановки и&nbsp;расстояния по&nbsp;Яндекс Картам. Карта показывает зал, выбранный наверху.</p>
+        </div>
       </div>
     </section>
 

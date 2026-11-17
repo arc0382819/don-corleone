@@ -499,5 +499,74 @@
     if (!seen) chooser.showModal();
   }
 
+  // ---------- Карта в «Адресах» ----------
+  // OpenStreetMap через Leaflet (vendor/leaflet). Библиотеку и кусочки карты
+  // качаем, только когда посетитель подлистал к карте. Карта одна на все залы:
+  // при смене зала она перелетает к нужному адресу.
+  // Координаты — точки входа из карточек залов на Яндекс Картах.
+  var PLACES = {
+    d: { at: [59.915075, 29.773077], name: 'зал на Дворцовом проспекте, 14/9' },
+    f: { at: [59.899574, 29.775110], name: 'зал на улице Федюнинского, 14к1' },
+    k: { at: [59.742844, 30.093744], name: 'зал в Красном Селе, Стрельнинское шоссе, 3Б' }
+  };
+  var mapEl = document.getElementById('map');
+  var map, pin;
+  var calmMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function showPlace(branch, animate) {
+    var place = PLACES[branch];
+    if (!map || !place) return;
+    pin.setLatLng(place.at);
+    mapEl.setAttribute('aria-label', 'Карта: ' + place.name);
+    if (animate && !calmMotion.matches) map.flyTo(place.at, 16, { duration: 1 });
+    else map.setView(place.at, 16);
+  }
+
+  function initMap() {
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'vendor/leaflet/leaflet.css';
+    document.head.appendChild(css);
+
+    var lib = document.createElement('script');
+    lib.src = 'vendor/leaflet/leaflet.js';
+    lib.onload = function () {
+      // Колесо мыши не зумит карту, а листает страницу. На телефоне один палец
+      // листает страницу, карту двигают и приближают двумя.
+      var touch = window.matchMedia('(pointer: coarse)').matches;
+      map = L.map(mapEl, { scrollWheelZoom: false, dragging: !touch });
+      map.attributionControl.setPrefix(false);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">участники OpenStreetMap</a>'
+      }).addTo(map);
+      pin = L.marker(PLACES.d.at, {
+        interactive: false,
+        keyboard: false,
+        // Кружок 44px повёрнут хвостиком вниз: кончик на 31px ниже центра
+        icon: L.divIcon({ className: '', html: '<span class="map-pin"></span>', iconSize: [44, 44], iconAnchor: [22, 53] })
+      }).addTo(map);
+      showPlace(body.getAttribute('data-branch'), false);
+
+      new MutationObserver(function () {
+        showPlace(body.getAttribute('data-branch'), true);
+      }).observe(body, { attributes: true, attributeFilter: ['data-branch'] });
+    };
+    document.head.appendChild(lib);
+  }
+
+  if (mapEl) {
+    if ('IntersectionObserver' in window) {
+      var mapWatch = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        mapWatch.disconnect();
+        initMap();
+      }, { rootMargin: '400px 0px' });
+      mapWatch.observe(mapEl);
+    } else {
+      initMap();
+    }
+  }
+
   update();
 })();
