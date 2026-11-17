@@ -289,8 +289,8 @@ body[data-branch="f"].switched .d-only { display: none; }
   align-items: center;
   padding-block: clamp(48px, 7vw, 96px);
 }
-/* Кадр держим так, чтобы в обрезку попали и мальчик, и мужчина */
-.family-photo { width: 100%; max-width: 380px; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 60%; border-radius: 4px; }
+/* Кадр держим так, чтобы в обрезку попали лица отца и сына */
+.family-photo { width: 100%; max-width: 380px; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 52%; border-radius: 4px; }
 .family h2 { font-size: clamp(48px, 7vw, 100px); line-height: 0.95; margin-bottom: 24px; }
 .family-text { max-width: 32em; font-size: 19px; }
 .family-price {
