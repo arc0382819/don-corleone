@@ -382,6 +382,20 @@ body[data-branch="f"].switched .d-only { display: none; }
 .summary { font-size: 19px; max-width: 32em; margin-bottom: 24px; }
 .go-note { margin-top: 12px; font-size: 14px; color: var(--muted); }
 
+/* Когда мастер и услуги выбраны, итог с кнопкой прилипает к низу экрана,
+   чтобы не листать весь список услуг до кнопки */
+.book.ready .step-go {
+  position: sticky; bottom: 0; z-index: 5;
+  background: var(--bg);
+  border-top: 1px solid var(--rule);
+  padding-block: 16px 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom, 0px));
+}
+.book.ready .step-title, .book.ready .go-note { display: none; }
+.book.ready .go-row { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; }
+.book.ready .summary { margin: 0; font-size: 17px; }
+.book.ready #go { flex: none; }
+
 /* Если браузер не умеет красить галочки, рисуем свои */
 @supports not (accent-color: red) {
   .pick input {
@@ -474,13 +488,23 @@ body[data-branch="f"] .place[data-b="f"] h3 { color: var(--accent); }
   .master-else { padding-left: calc(36px + 52px + 16px); }
   .foot-small { margin-left: 0; }
 
+  /* На телефоне итог показывает нижняя панель, своя прилипашка не нужна */
+  .book.ready .step-go { position: static; border-top: 0; padding: 0; }
+  .book.ready .go-row { display: block; }
+  .book.ready .summary { margin-bottom: 24px; }
+
+  html { scroll-padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+
   .bar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
     display: flex; gap: 8px;
     padding: 10px 16px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
     background: var(--bg);
     border-top: 1px solid var(--rule);
   }
+  /* Всё выбрано: панель целиком становится кнопкой «Выбрать время» */
+  body.book-ready .bar-call { display: none; }
   .bar a {
     flex: 1; text-align: center;
     font-size: 15px; font-weight: 600; text-decoration: none;

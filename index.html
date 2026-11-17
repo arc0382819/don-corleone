@@ -63,7 +63,7 @@
         <span class="to-light">Светлая тема</span>
       </button>
 
-      <a class="btn" href="#zapis">Записаться</a>
+      <a class="btn" id="top-book" href="#zapis">Записаться</a>
     </div>
   </header>
 
@@ -231,8 +231,10 @@
 
         <div class="step step-go">
           <p class="step-title"><span class="step-n">3</span>Время</p>
-          <p class="summary" id="summary" aria-live="polite">Выберите мастера и&nbsp;услуги.</p>
-          <a class="btn btn-big" id="go" href="#zapis" target="_blank" rel="noopener" aria-disabled="true">Выбрать время</a>
+          <div class="go-row">
+            <p class="summary" id="summary" aria-live="polite">Выберите мастера и&nbsp;услуги.</p>
+            <a class="btn btn-big" id="go" href="#zapis" target="_blank" rel="noopener" aria-disabled="true">Выбрать время</a>
+          </div>
           <p class="go-note">Онлайн-запись откроется в&nbsp;новой вкладке.</p>
         </div>
 
@@ -304,7 +306,7 @@
   <div class="bar">
     <a class="bar-call d-only" href="tel:+79522616699" aria-label="Позвонить в зал на Дворцовом">Позвонить</a>
     <a class="bar-call f-only" href="tel:+79500220630" aria-label="Позвонить в зал на Федюнинского">Позвонить</a>
-    <a class="bar-book" href="#zapis">Записаться</a>
+    <a class="bar-book" id="bar-book" href="#zapis">Записаться</a>
   </div>
 
   <script src="script.js"></script>

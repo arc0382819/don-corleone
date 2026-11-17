@@ -223,10 +223,36 @@
         (picked.length > 1 ? 'Итого ' : '') + formatRub(total) + '. Зал: ' + BRANCHES[branch].title + '.';
       go.href = bookingUrl(m.value, branch, keys);
       go.removeAttribute('aria-disabled');
+      setCta('Выбрать время · ' + formatRub(total), go.href, true);
     } else {
       go.href = '#zapis';
       go.setAttribute('aria-disabled', 'true');
+      if (m) setCta('Выбрать услуги', '#step-svc', false);
+      else setCta('Записаться', '#zapis', false);
     }
+
+    var ready = !!(m && chosen.length);
+    form.classList.toggle('ready', ready);
+    body.classList.toggle('book-ready', ready);
+  }
+
+  // Кнопки «Записаться» в шапке и в нижней панели телефона следуют за выбором:
+  // ничего не выбрано — ведут к записи, выбран мастер — к услугам,
+  // выбрано всё — сразу в календарь онлайн-записи.
+  var ctas = [document.getElementById('top-book'), document.getElementById('bar-book')];
+  function setCta(text, href, external) {
+    ctas.forEach(function (a) {
+      if (!a) return;
+      a.textContent = a.id === 'top-book' && external ? 'Выбрать время' : text;
+      a.href = href;
+      if (external) {
+        a.target = '_blank';
+        a.rel = 'noopener';
+      } else {
+        a.removeAttribute('target');
+        a.removeAttribute('rel');
+      }
+    });
   }
 
   form.addEventListener('change', function (event) {
