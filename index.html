@@ -9,6 +9,83 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-vl/SujgDB7d2Dn0fXHS4zajo5IQe4UftW3YmPC+mt5s='; style-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
   <title>Don Corleone — барбершоп в Ломоносове и Красном Селе</title>
   <meta name="description" content="Барбершоп Don Corleone: два зала в Ломоносове и зал в Красном Селе, каждый день с 10:00 до 22:00. Цены, мастера и онлайн-запись.">
+  <!-- Данные о залах для поисковиков (schema.org): адреса, телефоны, часы, координаты.
+       Браузер этот блок не выполняет, поэтому CSP и хеш выше его не касаются.
+       Если меняется телефон, адрес или часы зала, поправить и здесь.
+       TODO: при запуске на домене добавить каждому залу "url" и "image" с полным адресом сайта -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HairSalon",
+        "name": "Don Corleone",
+        "alternateName": "Дон Корлеоне",
+        "description": "Барбершоп на Дворцовом проспекте в Ломоносове",
+        "telephone": "+79522616699",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Дворцовый проспект, 14/9",
+          "addressLocality": "Ломоносов",
+          "addressRegion": "Санкт-Петербург",
+          "addressCountry": "RU"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 59.915075, "longitude": 29.773077 },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "10:00",
+          "closes": "22:00"
+        },
+        "sameAs": ["https://yandex.ru/maps/org/don_corleone/103205529268/", "https://t.me/don_corleone_barbershop"]
+      },
+      {
+        "@type": "HairSalon",
+        "name": "Don Corleone",
+        "alternateName": "Дон Корлеоне",
+        "description": "Барбершоп на улице Федюнинского в Ломоносове",
+        "telephone": "+79500220630",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "улица Федюнинского, 14к1",
+          "addressLocality": "Ломоносов",
+          "addressRegion": "Санкт-Петербург",
+          "addressCountry": "RU"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 59.899574, "longitude": 29.775110 },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "10:00",
+          "closes": "22:00"
+        },
+        "sameAs": ["https://yandex.ru/maps/org/don_corleone/197876531869/", "https://t.me/don_corleone_barbershop"]
+      },
+      {
+        "@type": "HairSalon",
+        "name": "Don Corleone",
+        "alternateName": "Дон Корлеоне",
+        "description": "Барбершоп на Стрельнинском шоссе в Красном Селе",
+        "telephone": "+79500098582",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Стрельнинское шоссе, 3Б",
+          "addressLocality": "Красное Село",
+          "addressRegion": "Санкт-Петербург",
+          "addressCountry": "RU"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 59.742844, "longitude": 30.093744 },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "10:00",
+          "closes": "22:00"
+        },
+        "sameAs": ["https://yandex.ru/maps/org/don_corleone/87448064235/", "https://t.me/don_corleone_barbershop"]
+      }
+    ]
+  }
+  </script>
   <!-- TODO: это демо для владельца — поисковикам запрещено его индексировать.
        При официальном запуске удалить эту строку и Disallow в robots.txt -->
   <meta name="robots" content="noindex, nofollow">
@@ -91,10 +168,12 @@
            alt="Логотип «Дон Корлеоне. Барбершоп»: мужчина в смокинге с сигарой, барбер-пул, ножницы и помазок, звёзды и красная роза"
            fetchpriority="high">
       <div class="hero-text">
-        <h1>Стрижка, от которой невозможно отказаться</h1>
+        <!-- h1 — тема страницы словами, которые ищут в Яндексе; слоган крупно под ним -->
+        <h1 class="hero-kicker">Барбершоп Don Corleone в&nbsp;Ломоносове и&nbsp;Красном Селе</h1>
+        <p class="hero-slogan">Стрижка, от которой невозможно отказаться</p>
         <p class="orn" aria-hidden="true">★ ★ ★</p>
         <p class="hero-facts">
-          Барбершоп в&nbsp;Ломоносове и&nbsp;Красном Селе. Три зала, каждый день с&nbsp;10:00 до&nbsp;22:00.
+          Три зала, каждый день с&nbsp;10:00 до&nbsp;22:00.
           Классическая стрижка <b class="d-only">1&nbsp;700&nbsp;₽</b><b class="f-only">1&nbsp;500&nbsp;₽</b><b class="k-only">1&nbsp;500–1&nbsp;700&nbsp;₽</b>, оформление бороды <b class="d-only">1&nbsp;300&nbsp;₽</b><b class="f-only">1&nbsp;000&nbsp;₽</b><b class="k-only">1&nbsp;000–1&nbsp;300&nbsp;₽</b>.
         </p>
         <!-- Главное действие первого экрана: сразу под ценами, до рейтинга -->

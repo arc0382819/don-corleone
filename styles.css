@@ -275,7 +275,15 @@ body[data-branch="k"] .no-k { display: none; }
 /* У эмблемы чёрный фон: на тёмной теме он сливается со страницей,
    на светлой эмблема становится круглым значком */
 .hero-emblem { width: 100%; max-width: 540px; border-radius: 50%; box-shadow: 0 0 0 1px var(--line), 0 24px 60px -24px rgb(0 0 0 / 0.55); }
-.hero h1 {
+/* h1 — короткая подпись над слоганом: в нём слова для поиска, а крупный слоган — обычный абзац */
+.hero-kicker {
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: 15px; font-weight: 600; line-height: 1.35;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-wrap: balance;
+}
+.hero-slogan {
   font-family: var(--display); font-weight: 800;
   font-size: clamp(38px, 5.2vw, 76px);
   line-height: 1.02; letter-spacing: -0.015em;
