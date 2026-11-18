@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Политика безопасности: скрипты, стили и шрифты только с этого сайта, картинки ещё с тайлов OpenStreetMap.
+       Хеш sha256 разрешает ровно один инлайн-скрипт темы ниже. Если его изменить хоть на символ,
+       пересчитать хеш, иначе браузер скрипт заблокирует. Держать скрипт в одну строку (CRLF/LF меняют хеш). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-vl/SujgDB7d2Dn0fXHS4zajo5IQe4UftW3YmPC+mt5s='; style-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'">
   <title>Don Corleone — барбершоп в Ломоносове и Красном Селе</title>
   <meta name="description" content="Барбершоп Don Corleone: два зала в Ломоносове и зал в Красном Селе, каждый день с 10:00 до 22:00. Цены, мастера и онлайн-запись.">
   <!-- TODO: это демо для владельца — поисковикам запрещено его индексировать.
        При официальном запуске удалить эту строку и Disallow в robots.txt -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="color-scheme" content="light dark">
-  <script>
-    try { var s = localStorage.getItem('color-scheme'); if (s) document.querySelector('meta[name="color-scheme"]').content = s; } catch (e) {}
-  </script>
+  <script>try { var s = localStorage.getItem('color-scheme'); if (s) document.querySelector('meta[name="color-scheme"]').content = s; } catch (e) {}</script>
   <meta name="theme-color" content="#f5ecd9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0c0908" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="fonts/Bitter-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
